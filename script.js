@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Tenta enviar para a planilha se a URL estiver configurada
-            if(GOOGLE_SCRIPT_URL !== "INSIRA_SUA_NOVA_URL_DO_GOOGLE_SCRIPT_AQUI") {
+            if(GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbzKpWLhpkBjIAtbeP7DWda56FFVUafdnUokOKl-60Q/dev") {
                     await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData });
             } else {
                 // Simula envio (apenas para teste se não houver URL)
