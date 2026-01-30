@@ -161,9 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- CONFIGURAÇÕES (INSIRA SEUS LINKS AQUI) ---
     // Link do AppScript da Planilha Google
-    const GOOGLE_SCRIPT_URL = "INSIRA_SUA_NOVA_URL_DO_GOOGLE_SCRIPT_AQUI"; 
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyZ3D48pxctW99lqw_9MdfloS5y1U69r2BCVphkx6jG5WPl-_apZ1pEHrhN1EA8jwkQ/exec"; 
     // Link do Grupo do WhatsApp
-    const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/SEU_LINK_DO_GRUPO_AQUI"; 
+    const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/EntL1sQQhLh3v3cE8vLqfA"; 
 
     // --- LÓGICA DO POPUP AUTOMÁTICO ---
     const modal = document.getElementById('vip-modal');
