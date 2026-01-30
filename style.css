@@ -471,6 +471,143 @@ body {
     .modal-header h2 { font-size: 1.6rem; }
 }
 
+/* --- EMERGENCY HERO (NOVO) --- */
+.emergency-hero { 
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); /* Vermelho Alerta */
+    padding: 80px 0; 
+    color: var(--white); 
+}
+
+/* Caixa "Importante Saber" */
+.important-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 50px;
+    backdrop-filter: blur(5px);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.important-header { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-bottom: 20px; 
+    color: var(--accent); /* Dourado */
+}
+.important-header h3 { font-size: 1.4rem; font-weight: 800; margin: 0; }
+.important-header i { font-size: 1.5rem; }
+
+.important-content ul { list-style: none; max-width: 600px; margin: 0 auto; }
+.important-content li { 
+    margin-bottom: 12px; 
+    font-size: 1.05rem; 
+    display: flex; 
+    gap: 12px; 
+    align-items: flex-start; /* FIX: Alinha ícone no topo */
+    text-align: left;
+    line-height: 1.4;
+}
+.important-content li i { 
+    color: var(--accent); 
+    margin-top: 3px; /* Ajuste fino para alinhar com a primeira linha */
+}
+
+/* Grid de Cards Emergência */
+.emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 Colunas no Desktop */
+    gap: 20px;
+}
+
+.emer-card {
+    background: var(--white);
+    color: var(--text-dark);
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.emer-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+
+.card-icon { 
+    font-size: 2.2rem; 
+    font-weight: 800; 
+    margin-bottom: 15px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+}
+
+.emer-card h4 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 800; }
+.emer-card p { font-size: 0.95rem; color: #666; margin-bottom: 20px; flex-grow: 1; line-height: 1.5; }
+
+/* Cores Específicas dos Cards */
+.card-red .card-icon { color: #e74c3c; }
+.card-pink .card-icon { color: #e6007e; }
+.card-dark .card-icon { color: #333; }
+.card-blue .card-icon { color: #0a1f44; }
+
+.btn-emer {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.card-red .btn-emer { background: #ffebee; color: #e74c3c; }
+.card-red .btn-emer:hover { background: #e74c3c; color: #fff; }
+
+.card-pink .btn-emer { background: #fce4ec; color: #e6007e; }
+.card-pink .btn-emer:hover { background: #e6007e; color: #fff; }
+
+.card-dark .btn-emer { background: #f0f0f0; color: #333; }
+.card-dark .btn-emer:hover { background: #333; color: #fff; }
+
+.card-blue .btn-emer { background: #e3f2fd; color: #0a1f44; }
+.card-blue .btn-emer:hover { background: #0a1f44; color: #fff; }
+
+.no-emer i { color: #e67e22; margin-right: 5px; }
+
+
+/* --- FOOTER --- */
+.main-footer { background-color: var(--primary); color: var(--white); padding-top: 60px; padding-bottom: 40px; position: relative; border-top: 5px solid var(--accent); }
+.footer-divider-btn { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); z-index: 10; width: max-content; }
+.btn-top { background: var(--accent); color: var(--primary); border: none; padding: 12px 30px; border-radius: 50px; font-family: var(--font-main); font-weight: 800; text-transform: uppercase; font-size: 0.85rem; cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: 0.3s ease; display: flex; align-items: center; gap: 10px; }
+.btn-top:hover { background: var(--white); transform: scale(1.05) translateY(-3px); }
+.footer-container { display: flex; flex-direction: column; align-items: center; }
+.footer-brand { margin-bottom: 30px; max-width: 600px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.footer-logo-img { height: 80px; width: auto; margin-bottom: 20px; display: block; margin-left: 0; margin-right: 0; }
+.footer-mission { font-size: 0.95rem; opacity: 0.8; font-style: italic; line-height: 1.6; }
+.footer-line { width: 100%; border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 30px 0; }
+.footer-bottom { width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 30px; }
+.footer-links { display: flex; gap: 25px; }
+.footer-links a { color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; opacity: 0.8; }
+.footer-links a:hover { color: var(--accent); opacity: 1; }
+.socials-footer a { color: var(--white); font-size: 1.4rem; margin-left: 20px; transition: 0.3s; background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none !important; border: none; }
+.socials-footer a:hover { background: var(--accent); color: var(--primary); transform: translateY(-3px); }
+.copyright p { font-size: 0.85rem; opacity: 0.6; margin-bottom: 5px; }
+.copyright small { font-size: 0.75rem; opacity: 0.4; }
+
+@media (max-width: 768px) {
+    .footer-bottom { flex-direction: column; gap: 20px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .socials-footer a { margin: 0 10px; }
+}
+
 /* --- MEDIA QUERY GERAL DE MOBILE (<968px) --- */
 @media (max-width: 968px) {
     /* HERO, ABOUT, STATS 1 COLUNA */
@@ -496,40 +633,12 @@ body {
     .community-form-wrapper { padding: 30px 20px; }
     .btn-vip { padding: 15px 10px; font-size: 0.9rem; white-space: nowrap; gap: 8px; }
     .input-icon input { font-size: 0.95rem; }
-}
 
-/* --- EMERGENCY HERO --- */
-.emergency-hero { background: var(--alert); padding: 60px 0; color: var(--white); }
-.emergency-btns { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
-.btn-emergency { display: flex; align-items: center; gap: 15px; padding: 15px 30px; border-radius: 12px; background: var(--white); color: var(--text-dark); text-decoration: none; transition: 0.3s; min-width: 250px; }
-.btn-emergency.pink i { color: var(--pink-180); }
-.btn-emergency.red i { color: var(--alert); }
-.btn-emergency span { display: block; font-weight: 800; font-size: 1.4rem; line-height: 1; }
-.btn-emergency:hover { transform: scale(1.05); }
-
-/* --- FOOTER --- */
-.main-footer { background-color: var(--primary); color: var(--white); padding-top: 60px; padding-bottom: 40px; position: relative; border-top: 5px solid var(--accent); }
-.footer-divider-btn { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); z-index: 10; width: max-content; }
-.btn-top { background: var(--accent); color: var(--primary); border: none; padding: 12px 30px; border-radius: 50px; font-family: var(--font-main); font-weight: 800; text-transform: uppercase; font-size: 0.85rem; cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transition: 0.3s ease; display: flex; align-items: center; gap: 10px; }
-.btn-top:hover { background: var(--white); transform: scale(1.05) translateY(-3px); }
-.footer-container { display: flex; flex-direction: column; align-items: center; }
-.footer-brand { margin-bottom: 30px; max-width: 600px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.footer-logo-img { height: 80px; width: auto; margin-bottom: 20px; display: block; margin-left: 0; margin-right: 0; }
-.footer-mission { font-size: 0.95rem; opacity: 0.8; font-style: italic; line-height: 1.6; }
-.footer-line { width: 100%; border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 30px 0; }
-.footer-bottom { width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 30px; }
-.footer-links { display: flex; gap: 25px; }
-.footer-links a { color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; opacity: 0.8; }
-.footer-links a:hover { color: var(--accent); opacity: 1; }
-.socials-footer a { color: var(--white); font-size: 1.4rem; margin-left: 20px; transition: 0.3s; background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none !important; border: none; }
-.socials-footer a:hover { background: var(--accent); color: var(--primary); transform: translateY(-3px); }
-.copyright p { font-size: 0.85rem; opacity: 0.6; margin-bottom: 5px; }
-.copyright small { font-size: 0.75rem; opacity: 0.4; }
-
-@media (max-width: 768px) {
-    .footer-bottom { flex-direction: column; gap: 20px; }
-    .footer-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .socials-footer a { margin: 0 10px; }
+    /* EMERGENCY CARDS MOBILE */
+    .emergency-grid { grid-template-columns: 1fr; } /* 1 Coluna no mobile */
+    .important-header { flex-direction: column; gap: 5px; }
+    .important-box { padding: 25px 20px; text-align: center; } /* Centralizado no box */
+    .important-content ul { text-align: left; } /* Texto lista a esquerda */
 }
 
 /* --- ANIMAÇÕES DE SCROLL --- */

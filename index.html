@@ -43,7 +43,8 @@
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Quem Sou</a></li>
                 <li><a href="#cartilha">A Cartilha</a></li>
-                <li><a href="#comunidade">Comunidade</a></li> <li><a href="#denuncia" class="btn-nav">Ajuda Urgente</a></li>
+                <li><a href="#comunidade">Comunidade</a></li> 
+                <li><a href="#denuncia" class="btn-nav">Ajuda Urgente</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -125,7 +126,6 @@
             <div class="guide-grid">
                 
                 <div class="guide-col-left scroll-animate">
-                    
                     <div class="section-title guide-title">
                         <h2>Guia de Proteção</h2>
                         <p>Clique nos tópicos abaixo para entender seus direitos.</p>
@@ -254,27 +254,72 @@
     </section>
 
     <section id="denuncia" class="emergency-hero">
-        <div class="container text-center scroll-animate">
-            <h2>Precisa de Ajuda Agora?</h2>
-            <p>A denúncia pode ser anônima. Sua segurança vem primeiro.</p>
-            
-            <div class="emergency-btns">
-                <a href="tel:180" class="btn-emergency pink">
-                    <i class="fa-solid fa-phone"></i>
-                    <div>
-                        <span>LIGUE 180</span>
-                        <small>Central da Mulher (Sigiloso)</small>
-                    </div>
-                </a>
-                <a href="tel:190" class="btn-emergency red">
-                    <i class="fa-solid fa-taxi-bus"></i>
-                    <div>
-                        <span>LIGUE 190</span>
-                        <small>Polícia (Emergência)</small>
-                    </div>
-                </a>
+        <div class="container">
+            <div class="section-title text-center text-white scroll-animate">
+                <h2>Canais de Denúncia</h2>
+                <p>Saber quem chamar pode salvar uma vida. Não se cale.</p>
             </div>
-            <p class="mt-3 text-white"><i class="fa-solid fa-lock"></i> Site seguro e informativo.</p>
+
+            <div class="important-box scroll-animate">
+                <div class="important-header">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <h3>IMPORTANTE SABER</h3>
+                </div>
+                <div class="important-content">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-check"></i> 
+                            <div><strong>Qualquer pessoa</strong> pode denunciar, não só a vítima.</div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i> 
+                            <div>Denúncia pode ser feita por vizinho, familiar ou amigo.</div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-user-shield"></i> 
+                            <div>O sigilo e anonimato são garantidos.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="emergency-grid scroll-animate">
+                
+                <div class="emer-card card-red">
+                    <div class="card-icon"><i class="fa-solid fa-taxi-bus"></i> 190</div>
+                    <h4>Risco Imediato</h4>
+                    <p><strong>Polícia Militar.</strong> Acione em flagrante, agressão ocorrendo agora ou risco de morte.</p>
+                    <a href="tel:190" class="btn-emer">Ligar 190</a>
+                </div>
+
+                <div class="emer-card card-pink">
+                    <div class="card-icon"><i class="fa-solid fa-person-dress"></i> 180</div>
+                    <h4>Central da Mulher</h4>
+                    <p><strong>Apoio e Orientação.</strong> Informações sobre leis, direitos e rede de atendimento 24h.</p>
+                    <a href="tel:180" class="btn-emer">Ligar 180</a>
+                </div>
+
+                <div class="emer-card card-dark">
+                    <div class="card-icon"><i class="fa-solid fa-user-secret"></i> 181</div>
+                    <h4>Disque Denúncia</h4>
+                    <p><strong>Anônimo.</strong> Para entregar informações que ajudem na investigação sem se expor.</p>
+                    <a href="tel:181" class="btn-emer">Ligar 181</a>
+                </div>
+
+                <div class="emer-card card-blue">
+                    <div class="card-icon"><i class="fa-solid fa-building-columns"></i> 197</div>
+                    <h4>Polícia Civil</h4>
+                    <p>Registrar ocorrências, denúncias e obter infos.<br>
+                        <small class="no-emer"><i class="fa-solid fa-circle-exclamation"></i> Não é emergência imediata.</small>
+                    </p>
+                    <a href="tel:197" class="btn-emer">Ligar 197</a>
+                </div>
+
+            </div>
+            
+            <p class="mt-3 text-center text-white scroll-animate" style="opacity: 0.8; font-size: 0.9rem;">
+                <i class="fa-solid fa-lock"></i> Site seguro e informativo.
+            </p>
         </div>
     </section>
 
@@ -318,41 +363,17 @@
     <div id="vip-modal" class="modal">
         <div class="modal-content vip-modal-style">
             <span class="close-button" onclick="closeModal()">&times;</span>
-            
             <div class="modal-header">
                 <i class="fa-brands fa-whatsapp"></i>
                 <h2>Comunidade Oficial</h2>
             </div>
-            
-            <p class="modal-invite">
-                Receba em primeira mão notícias e dicas de segurança na nossa Comunidade Oficial.
-            </p>
-
+            <p class="modal-invite">Receba em primeira mão notícias e dicas de segurança na nossa Comunidade Oficial.</p>
             <form id="lead-form-popup" class="vip-form-popup">
-                
-                <div class="input-icon">
-                    <i class="fa-solid fa-user"></i>
-                    <input type="text" name="Nome" placeholder="Seu Nome Completo" required>
-                </div>
-
-                <div class="input-icon">
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="email" name="Email" placeholder="Seu Melhor E-mail" required>
-                </div>
-
-                <div class="input-icon">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <input type="tel" name="WhatsApp" class="phone-mask" placeholder="(DDD) + Número" required maxlength="15">
-                </div>
-
-                <button type="submit" class="btn-vip btn-popup">
-                    <span>Entrar no Grupo</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                
-                <p class="form-note">
-                    <i class="fa-solid fa-lock"></i> Seus dados estão seguros.
-                </p>
+                <div class="input-icon"><i class="fa-solid fa-user"></i><input type="text" name="Nome" placeholder="Seu Nome Completo" required></div>
+                <div class="input-icon"><i class="fa-solid fa-envelope"></i><input type="email" name="Email" placeholder="Seu Melhor E-mail" required></div>
+                <div class="input-icon"><i class="fa-brands fa-whatsapp"></i><input type="tel" name="WhatsApp" class="phone-mask" placeholder="(DDD) + Número" required maxlength="15"></div>
+                <button type="submit" class="btn-vip btn-popup"><span>Entrar no Grupo</span><i class="fa-solid fa-arrow-right"></i></button>
+                <p class="form-note"><i class="fa-solid fa-lock"></i> Seus dados estão seguros.</p>
             </form>
         </div>
     </div>
@@ -360,4 +381,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
