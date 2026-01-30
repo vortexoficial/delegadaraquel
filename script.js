@@ -1,62 +1,99 @@
-// --- 1. Menu Mobile (Burger) ---
-const navSlide = () => {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
+// --- 1. LOADER LOGIC ---
+document.addEventListener("DOMContentLoaded", () => {
+    const loader = document.getElementById("loader");
+    const progressBar = document.querySelector(".progress-bar");
+    const body = document.body;
 
+    // Inicia a barra de progresso
+    setTimeout(() => {
+        progressBar.style.width = "100%";
+    }, 100);
+
+    // Fade Out após 1.5s
+    setTimeout(() => {
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+        body.classList.add("loaded"); 
+    }, 1600);
+});
+
+// --- 2. MENU MOBILE ---
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+const navLinks = document.querySelectorAll('.nav-links li');
+
+if(burger){
     burger.addEventListener('click', () => {
-        // Toggle Nav
         nav.classList.toggle('nav-active');
-
-        // Animate Links
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
-        });
-
-        // Burger Animation
         burger.classList.toggle('toggle');
     });
-    
-    // Fechar menu ao clicar em um link
-    navLinks.forEach(link => link.addEventListener('click', () => {
-        if(nav.classList.contains('nav-active')){
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
             nav.classList.remove('nav-active');
             burger.classList.remove('toggle');
-            navLinks.forEach(link => link.style.animation = '');
+        });
+    });
+}
+
+// --- 3. ACORDEÃO (Accordion) ---
+const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        const accordionBody = header.nextElementSibling;
+        header.classList.toggle('active');
+        if (header.classList.contains('active')) {
+            accordionBody.style.maxHeight = accordionBody.scrollHeight + "px";
+        } else {
+            accordionBody.style.maxHeight = 0;
         }
-    }));
+    });
+});
+
+// --- 4. ANIMAÇÃO TYPEWRITER (Teclando e Apagando) ---
+const typingText = document.querySelector(".typing-text");
+const words = ["saída", "esperança", "ajuda", "vida"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+    if (!typingText) return;
+
+    const currentWord = words[wordIndex];
+    
+    // Controla o que está escrito no span
+    if (isDeleting) {
+        typingText.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingText.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    // Velocidade de digitação
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+        // Palavra completa: espera um pouco antes de apagar
+        typeSpeed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        // Apagou tudo: passa para a próxima palavra
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+    }
+
+    setTimeout(typeEffect, typeSpeed);
 }
 
-navSlide();
+// Inicia a digitação
+document.addEventListener("DOMContentLoaded", typeEffect);
 
 
-// --- 2. Carrossel de Texto Animado (Hero Section) ---
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const totalSlides = slides.length;
-
-function nextSlide() {
-    // Remove a classe active do slide atual
-    slides[currentSlide].classList.remove('active');
-    
-    // Calcula o próximo slide (loop)
-    currentSlide = (currentSlide + 1) % totalSlides;
-    
-    // Adiciona a classe active ao próximo slide
-    slides[currentSlide].classList.add('active');
-}
-
-// Muda o slide a cada 4 segundos
-setInterval(nextSlide, 4000);
-
-
-// --- 3. Animações ao Rolar (Scroll) ---
-// Usa Intersection Observer API para detectar quando elementos entram na tela
-
+// --- 5. ANIMAÇÃO SCROLL ---
 const scrollElements = document.querySelectorAll(".scroll-animate");
 
 const elementInView = (el, dividend = 1) => {
@@ -73,33 +110,14 @@ const displayScrollElement = (element) => {
 
 const handleScrollAnimation = () => {
   scrollElements.forEach((el) => {
-    if (elementInView(el, 1.15)) { // 1.15 define o quão cedo a animação começa
+    if (elementInView(el, 1.2)) {
       displayScrollElement(el);
     }
   });
 };
 
-// Adiciona o listener de scroll
 window.addEventListener("scroll", () => {
   handleScrollAnimation();
 });
 
-// Dispara uma vez ao carregar para pegar elementos que já estão visíveis
 handleScrollAnimation();
-
-
-// --- 4. Navbar Sutil na Rolagem ---
-// Adiciona uma sombra na navbar quando a página é rolada para baixo
-const navbar = document.getElementById('navbar');
-window.onscroll = function() {
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = "0 2px 15px rgba(0,0,0,0.4)";
-        navbar.style.padding = "0.7rem 0"; // Leve redução no tamanho
-        navbar.style.transition = "all 0.3s ease";
-    } else {
-        navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.3)";
-        navbar.style.padding = "1rem 0";
-    }
-    // Chama a função de animação de scroll também
-    handleScrollAnimation();
-};
