@@ -87,8 +87,9 @@ body {
 .loader-content { text-align: center; color: var(--white); width: min(82%, 420px); }
 .loader-logo-shell {
     position: relative;
-    --loader-outline-duration: 2.48s;
-    --loader-fill-duration: 2.42s;
+    --loader-outline-duration: 1.35s;
+    --loader-fill-duration: 1.45s;
+    --loader-fill-delay: 1.05s;
     width: clamp(138px, 30vw, 196px);
     margin: 0 auto 20px;
     display: grid;
@@ -119,10 +120,10 @@ body {
     z-index: 1;
     clip-path: inset(0 100% 0 0);
     opacity: 0.9;
-    animation: loaderRevealSide var(--loader-fill-duration) cubic-bezier(0.42, 0, 0.2, 1) 0.08s forwards;
+    animation: loaderRevealSide var(--loader-fill-duration) cubic-bezier(0.42, 0, 0.2, 1) var(--loader-fill-delay) forwards;
 }
-.progress-container { width: min(100%, 220px); height: 1px; margin: 0 auto; background: rgba(255,255,255,0.14); border-radius: 2px; overflow: hidden; position: relative; }
-.progress-bar { height: 100%; background: linear-gradient(90deg, rgba(255,204,0,0.65), rgba(255,244,163,0.9), rgba(255,204,0,0.65)); width: 0%; box-shadow: 0 0 8px rgba(255,204,0,0.38); transition: width 2.48s cubic-bezier(0.42, 0, 0.2, 1); }
+.progress-container { display: none; }
+.progress-bar { height: 100%; background: linear-gradient(90deg, rgba(255,204,0,0.65), rgba(255,244,163,0.9), rgba(255,204,0,0.65)); width: 0%; box-shadow: 0 0 8px rgba(255,204,0,0.38); transition: width 3s cubic-bezier(0.42, 0, 0.2, 1); }
 
 @keyframes loaderHalo {
     0% { opacity: 0; transform: scale(0.72); }
@@ -960,8 +961,8 @@ body {
 
 .formation-card {
     display: grid;
-    grid-template-columns: 92px minmax(0, 1fr);
-    gap: 20px;
+    grid-template-columns: 92px 48px minmax(0, 1fr);
+    gap: 18px;
     align-items: center;
     min-height: 112px;
     padding: 20px 24px;
@@ -983,6 +984,34 @@ body {
     font-size: 1.55rem;
     font-weight: 800;
     line-height: 1;
+}
+
+.formation-icon {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--accent);
+    box-shadow: 0 0 0 7px rgba(10,31,68,0.055);
+}
+
+.formation-icon::before {
+    content: '';
+    position: absolute;
+    left: -18px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, transparent, rgba(255,204,0,0.85), transparent);
+}
+
+.formation-icon i {
+    font-size: 1.05rem;
 }
 
 .formation-card h3 {
@@ -1014,6 +1043,21 @@ body {
     box-shadow: 0 24px 54px rgba(10,31,68,0.16);
 }
 
+.formation-panel::before {
+    content: '';
+    position: absolute;
+    inset: auto -34px -18px auto;
+    width: min(118%, 520px);
+    height: 82%;
+    background:
+        linear-gradient(90deg, rgba(7,18,38,0.95) 0%, rgba(7,18,38,0.45) 46%, rgba(7,18,38,0.1) 100%),
+        url('novaimg2.webp') right bottom / cover no-repeat;
+    opacity: 0.22;
+    filter: saturate(0.75) contrast(1.05);
+    pointer-events: none;
+    z-index: 0;
+}
+
 .formation-panel::after {
     content: 'AC';
     position: absolute;
@@ -1024,6 +1068,7 @@ body {
     font-weight: 800;
     line-height: 0.8;
     pointer-events: none;
+    z-index: 0;
 }
 
 .panel-index {
@@ -1109,8 +1154,8 @@ body {
     }
 
     .formation-card {
-        grid-template-columns: 72px minmax(0, 1fr);
-        gap: 14px;
+        grid-template-columns: 68px 42px minmax(0, 1fr);
+        gap: 12px;
         min-height: 0;
         padding: 16px;
     }
@@ -1118,6 +1163,16 @@ body {
     .formation-year {
         min-height: 44px;
         font-size: 1.25rem;
+    }
+
+    .formation-icon {
+        width: 42px;
+        height: 42px;
+        box-shadow: 0 0 0 5px rgba(10,31,68,0.055);
+    }
+
+    .formation-icon::before {
+        left: -13px;
     }
 
     .formation-card h3 {
@@ -1130,6 +1185,13 @@ body {
 
     .formation-panel {
         padding: 24px 20px;
+    }
+
+    .formation-panel::before {
+        inset: auto -42px -24px auto;
+        width: min(128%, 430px);
+        height: 76%;
+        opacity: 0.18;
     }
 
     .formation-panel::after {

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loader = document.getElementById("loader");
     const progressBar = document.querySelector(".progress-bar");
     const body = document.body;
-    const loaderDuration = 2600;
+    const loaderDuration = 3300;
 
     setTimeout(() => {
         if (progressBar) progressBar.style.width = "100%";
