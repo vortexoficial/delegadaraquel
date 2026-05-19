@@ -1032,7 +1032,8 @@ body {
 .formation-panel {
     position: relative;
     overflow: hidden;
-    padding: 32px 30px;
+    min-height: 640px;
+    padding: 32px 28px;
     border-radius: 8px;
     border: 1px solid rgba(255,204,0,0.34);
     background:
@@ -1046,14 +1047,13 @@ body {
 .formation-panel::before {
     content: '';
     position: absolute;
-    inset: auto -34px -18px auto;
-    width: min(118%, 520px);
-    height: 82%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     background:
-        linear-gradient(90deg, rgba(7,18,38,0.95) 0%, rgba(7,18,38,0.45) 46%, rgba(7,18,38,0.1) 100%),
-        url('novaimg2.webp') right bottom / cover no-repeat;
-    opacity: 0.22;
-    filter: saturate(0.75) contrast(1.05);
+        url('novaimg3.webp') right center / contain no-repeat;
+    opacity: 0.82;
+    filter: saturate(0.86) contrast(1.04);
     pointer-events: none;
     z-index: 0;
 }
@@ -1086,7 +1086,7 @@ body {
 .formation-panel h3 {
     position: relative;
     z-index: 1;
-    max-width: 100%;
+    max-width: 66%;
     color: var(--white);
     font-size: clamp(1.65rem, 2.15vw, 2.08rem);
     line-height: 1.02;
@@ -1094,9 +1094,16 @@ body {
     text-wrap: balance;
 }
 
+.formation-panel h3 span {
+    display: block;
+    font-size: 0.5em;
+    line-height: 1.05;
+}
+
 .formation-panel p {
     position: relative;
     z-index: 1;
+    max-width: 62%;
     color: rgba(255,255,255,0.76);
     font-size: 0.98rem;
     line-height: 1.55;
@@ -1106,6 +1113,7 @@ body {
 .formation-panel ul {
     position: relative;
     z-index: 1;
+    max-width: 62%;
     list-style: none;
     display: grid;
     gap: 12px;
@@ -1184,14 +1192,14 @@ body {
     }
 
     .formation-panel {
+        min-height: 570px;
         padding: 24px 20px;
     }
 
     .formation-panel::before {
-        inset: auto -42px -24px auto;
-        width: min(128%, 430px);
-        height: 76%;
-        opacity: 0.18;
+        background:
+            url('novaimg3.webp') right center / contain no-repeat;
+        opacity: 0.82;
     }
 
     .formation-panel::after {
@@ -1202,6 +1210,20 @@ body {
 
     .panel-index {
         margin-bottom: 28px;
+    }
+
+    .formation-panel h3,
+    .formation-panel p,
+    .formation-panel ul {
+        max-width: 68%;
+    }
+
+    .formation-panel h3 {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+
+    .formation-panel h3 span {
+        font-size: 0.56em;
     }
 }
 
@@ -1369,7 +1391,7 @@ body {
 
 .front-card-featured h3 {
     color: var(--white);
-    font-size: clamp(2.2rem, 4.2vw, 4.1rem);
+    font-size: clamp(1.87rem, 3.57vw, 3.49rem);
     line-height: 0.94;
     margin-top: 0;
 }
