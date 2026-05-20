@@ -30,7 +30,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=no-popup-img-fast-v2">
+    <link rel="stylesheet" href="style.css?v=popup-img-fast-v3">
 </head>
 <body>
 
@@ -73,7 +73,7 @@
                 <h1>Você não tem culpa.<br>Existe <span class="highlight typing-text">saída</span>.</h1>
                 <p>Entre na comunidade oficial para receber orientação, conteúdos de proteção e acesso à cartilha digital.</p>
                 <div class="hero-btns">
-                    <a href="#comunidade" class="btn btn-primary btn-orbit-glow"><span>Entrar na Comunidade</span></a>
+                    <a href="#vip-modal" class="btn btn-primary btn-orbit-glow" data-open-vip-modal><span>Entrar na Comunidade</span></a>
                     <a href="#cartilha" class="btn btn-outline shine-effect">Ler Cartilha Digital</a>
                 </div>
             </div>
@@ -692,6 +692,24 @@
         </div>
     </footer>
 
-    <script src="script.js?v=no-popup-img-fast-v2"></script>
+    <div id="vip-modal" class="modal">
+        <div class="modal-content vip-modal-style">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <i class="fa-brands fa-whatsapp"></i>
+                <h2>Comunidade Oficial</h2>
+            </div>
+            <p class="modal-invite">Cadastre-se para entrar na comunidade oficial e receber a cartilha, orientações e conteúdos de proteção.</p>
+            <form id="lead-form-popup" class="vip-form-popup">
+                <div class="input-icon"><i class="fa-solid fa-user"></i><input type="text" name="Nome" placeholder="Seu Nome Completo" required></div>
+                <div class="input-icon"><i class="fa-solid fa-envelope"></i><input type="email" name="Email" placeholder="Seu Melhor E-mail" required></div>
+                <div class="input-icon"><i class="fa-brands fa-whatsapp"></i><input type="tel" name="WhatsApp" class="phone-mask" placeholder="(DDD) + Número" required maxlength="15"></div>
+                <button type="submit" class="btn-vip btn-popup"><span>Entrar no Grupo</span><i class="fa-solid fa-arrow-right"></i></button>
+                <p class="form-note"><i class="fa-solid fa-lock"></i> Seus dados estão seguros.</p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js?v=popup-img-fast-v3"></script>
 </body>
 </html>
