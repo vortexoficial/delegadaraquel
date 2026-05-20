@@ -609,12 +609,7 @@ body {
     }
 
     .about-img::before {
-        left: 0;
-        right: 0;
-        height: 62%;
-        border-left: 0;
-        border-right: 0;
-        border-radius: 0;
+        content: none;
     }
 
     .img-delegada {
