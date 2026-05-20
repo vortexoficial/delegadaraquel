@@ -2,19 +2,28 @@
 document.addEventListener("DOMContentLoaded", () => {
     const loader = document.getElementById("loader");
     const progressBar = document.querySelector(".progress-bar");
+    const loaderFill = document.querySelector(".loader-logo-fill");
     const body = document.body;
-    const loaderDuration = 3300;
+    const loaderFallbackDuration = 2800;
+    let loaderHidden = false;
 
     setTimeout(() => {
         if (progressBar) progressBar.style.width = "100%";
     }, 100);
 
-    setTimeout(() => {
-        if (!loader) return;
+    const hideLoader = () => {
+        if (!loader || loaderHidden) return;
+        loaderHidden = true;
         loader.style.opacity = "0";
         loader.style.visibility = "hidden";
         body.classList.add("loaded"); 
-    }, loaderDuration);
+    };
+
+    if (loaderFill) {
+        loaderFill.addEventListener("animationend", hideLoader, { once: true });
+    }
+
+    setTimeout(hideLoader, loaderFallbackDuration);
 });
 
 // --- 2. MENU MOBILE ---
