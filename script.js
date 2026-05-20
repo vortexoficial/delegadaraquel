@@ -3,18 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const loader = document.getElementById("loader");
     const progressBar = document.querySelector(".progress-bar");
     const body = document.body;
-    const loaderDuration = 3300;
+    let loaderHidden = false;
 
     setTimeout(() => {
         if (progressBar) progressBar.style.width = "100%";
     }, 100);
 
-    setTimeout(() => {
-        if (!loader) return;
+    const hideLoader = () => {
+        if (!loader || loaderHidden) return;
+        loaderHidden = true;
         loader.style.opacity = "0";
         loader.style.visibility = "hidden";
         body.classList.add("loaded"); 
-    }, loaderDuration);
+    };
+
+    window.addEventListener("load", () => setTimeout(hideLoader, 350), { once: true });
+    setTimeout(hideLoader, 1200);
 });
 
 // --- 2. MENU MOBILE ---
@@ -158,7 +162,7 @@ if(btnBackToTop){
     });
 }
 
-// --- 8. INTEGRAÇÃO E LÓGICA DE POPUP + FORMULÁRIOS ---
+// --- 8. INTEGRAÇÃO E LÓGICA DO FORMULÁRIO ---
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- CONFIGURAÇÕES (INSIRA SEUS LINKS AQUI) ---
@@ -166,32 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyZ3D48pxctW99lqw_9MdfloS5y1U69r2BCVphkx6jG5WPl-_apZ1pEHrhN1EA8jwkQ/exec"; 
     // Link do Grupo do WhatsApp
     const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/EntL1sQQhLh3v3cE8vLqfA"; 
-
-    // --- LÓGICA DO POPUP ACIONADO PELO CTA ---
-    const modal = document.getElementById('vip-modal');
-
-    // Função Global para Fechar
-    window.closeModal = function() {
-        if(modal) modal.style.display = 'none';
-    }
-
-    window.openVipModal = function() {
-        if(modal) modal.style.display = 'flex';
-    }
-
-    document.querySelectorAll('[data-open-vip-modal]').forEach(button => {
-        button.addEventListener('click', (event) => {
-            event.preventDefault();
-            openVipModal();
-        });
-    });
-
-    // Fecha ao clicar fora
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            closeModal();
-        }
-    }
 
     // --- MÁSCARA DE TELEFONE (DDD + Número) ---
     const phoneInputs = document.querySelectorAll('input[name="WhatsApp"]');
@@ -237,8 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 await new Promise(r => setTimeout(r, 1000)); 
             }
 
-            // Sucesso: Fecha modal se for o popup e Redireciona
-            if(formId === 'lead-form-popup') closeModal();
+            // Sucesso: limpa o formulário e redireciona para o grupo
             form.reset();
             window.location.href = WHATSAPP_GROUP_URL;
 
@@ -251,17 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- ATIVAR LISTENERS NOS DOIS FORMULÁRIOS ---
+    // --- ATIVAR LISTENER DO FORMULÁRIO ---
     
     // 1. Formulário da Sessão (Página)
     const pageForm = document.getElementById('lead-form-delegada');
     if (pageForm) {
         pageForm.addEventListener('submit', (e) => handleFormSubmit(e, 'lead-form-delegada'));
-    }
-
-    // 2. Formulário do Popup
-    const popupForm = document.getElementById('lead-form-popup');
-    if (popupForm) {
-        popupForm.addEventListener('submit', (e) => handleFormSubmit(e, 'lead-form-popup'));
     }
 });

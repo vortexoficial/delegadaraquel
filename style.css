@@ -177,7 +177,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    background-image: url('img/hero-mobile.webp'); 
+    background-image: url('img/hero-mobile-fast.webp'); 
     background-position: top center; 
     background-size: 100% auto;
 }
@@ -203,7 +203,7 @@ body {
 }
 
 @media (min-width: 1024px) {
-    .hero { min-height: 100vh; background-image: url('img/hero-desktop.webp'); background-position: center right; background-size: cover; align-items: center; }
+    .hero { min-height: 100vh; background-image: url('img/hero-desktop-fast.webp'); background-position: center right; background-size: cover; align-items: center; }
     .hero-container { padding-bottom: 0; padding-top: 0; padding-left: 0; padding-right: 0; }
     .hero-btns { width: auto; flex-direction: row; }
     .btn { width: auto; }
@@ -1051,7 +1051,7 @@ body {
     width: 100%;
     height: 100%;
     background:
-        url('novaimg3.webp') right center / contain no-repeat;
+        url('novaimg3-fast.webp') right center / contain no-repeat;
     opacity: 0.82;
     filter: saturate(0.86) contrast(1.04);
     pointer-events: none;
@@ -1198,7 +1198,7 @@ body {
 
     .formation-panel::before {
         background:
-            url('novaimg3.webp') right center / contain no-repeat;
+            url('novaimg3-fast.webp') right center / contain no-repeat;
         opacity: 0.82;
     }
 
@@ -2715,56 +2715,6 @@ body {
     margin-top: 10px;
 }
 .btn-vip:hover { background: var(--accent); color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-
-/* --- ESTILOS DO POPUP (MODAL) --- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(10, 31, 68, 0.85);
-    backdrop-filter: blur(5px);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-content.vip-modal-style {
-    background-color: var(--white);
-    padding: 40px 30px;
-    border-radius: 20px;
-    max-width: 450px;
-    width: 100%;
-    position: relative;
-    border: 2px solid var(--accent);
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    animation: zoomIn 0.4s ease-out;
-}
-
-@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-.close-button { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: var(--text-light); cursor: pointer; line-height: 0.5; transition: 0.3s; }
-.close-button:hover { color: var(--alert); }
-
-.modal-header i { font-size: 3rem; color: #25D366; margin-bottom: 10px; }
-.modal-header h2 { color: var(--primary); font-size: 2rem; margin-bottom: 10px; line-height: 1.1; }
-.modal-invite { color: var(--text-light); font-size: 1rem; margin-bottom: 25px; line-height: 1.5; }
-
-.vip-form-popup .input-icon { margin-bottom: 15px; position: relative; }
-.vip-form-popup .input-icon i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1rem; }
-.vip-form-popup input { width: 100%; padding: 14px 15px 14px 45px; border: 1px solid #ddd; border-radius: 8px; font-family: var(--font-main); font-size: 1rem; background: #f8f9fa; transition: 0.3s; }
-.vip-form-popup input:focus { border-color: var(--primary); background: var(--white); outline: none; box-shadow: 0 0 0 3px rgba(10, 31, 68, 0.1); }
-.btn-popup { margin-top: 10px; width: 100%; padding: 16px; font-size: 1rem; }
-.form-note { margin-top: 15px; font-size: 0.8rem; color: #888; display: flex; align-items: center; justify-content: center; gap: 5px; }
-
-@media (max-width: 480px) {
-    .modal-content.vip-modal-style { padding: 30px 20px; }
-    .modal-header h2 { font-size: 1.6rem; }
-}
 
 /* --- EMERGENCY HERO (NOVO) --- */
 .emergency-hero { 

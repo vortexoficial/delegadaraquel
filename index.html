@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartilha de Proteção | Delegada Raquel</title>
     
-    <link rel="icon" type="image/webp" href="img/favicon.webp">
+    <link rel="icon" type="image/webp" href="img/favicon-fast.webp">
+    <link rel="preload" as="image" href="img/hero-mobile-fast.webp" type="image/webp" media="(max-width: 1023px)" fetchpriority="high">
+    <link rel="preload" as="image" href="img/hero-desktop-fast.webp" type="image/webp" media="(min-width: 1024px)" fetchpriority="high">
 
     <meta property="og:locale" content="pt_BR">
     <meta property="og:type" content="website">
@@ -28,7 +30,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=about-clean-v17">
+    <link rel="stylesheet" href="style.css?v=no-popup-img-fast-v2">
 </head>
 <body>
 
@@ -47,7 +49,7 @@
     <nav class="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <img src="img/logo.webp" alt="Delegada Raquel" class="logo-img">
+                <img src="img/logo-fast.webp" alt="Delegada Raquel" class="logo-img" width="132" height="45" decoding="async">
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
@@ -71,7 +73,7 @@
                 <h1>Você não tem culpa.<br>Existe <span class="highlight typing-text">saída</span>.</h1>
                 <p>Entre na comunidade oficial para receber orientação, conteúdos de proteção e acesso à cartilha digital.</p>
                 <div class="hero-btns">
-                    <a href="#vip-modal" class="btn btn-primary btn-orbit-glow" data-open-vip-modal><span>Entrar na Comunidade</span></a>
+                    <a href="#comunidade" class="btn btn-primary btn-orbit-glow"><span>Entrar na Comunidade</span></a>
                     <a href="#cartilha" class="btn btn-outline shine-effect">Ler Cartilha Digital</a>
                 </div>
             </div>
@@ -117,8 +119,8 @@
         <div class="container about-grid">
             <div class="about-img scroll-animate">
                 <picture>
-                    <source media="(min-width: 969px)" srcset="img/delegada2.webp">
-                    <img src="img/delegada.webp" alt="Delegada Raquel" class="img-delegada" loading="lazy" decoding="async">
+                    <source media="(min-width: 969px)" srcset="img/delegada2-fast.webp">
+                    <img src="img/delegada-fast.webp" alt="Delegada Raquel" class="img-delegada" width="980" height="1470" loading="lazy" decoding="async">
                 </picture>
             </div>
 
@@ -290,7 +292,7 @@
                         <h3>Pioneirismo institucional</h3>
                         <p>Foi a primeira mulher a presidir o Sindpesp, abrindo espaço em uma posição estratégica de representação da carreira.</p>
                     </div>
-                    <img src="novaimg.webp" alt="Delegada Raquel Gallinati em pé" class="front-card-featured-img" loading="lazy" decoding="async">
+                    <img src="novaimg-fast.webp" alt="Delegada Raquel Gallinati em pé" class="front-card-featured-img" width="520" height="854" loading="lazy" decoding="async">
                 </article>
 
                 <article class="front-card">
@@ -514,7 +516,7 @@
                 </div>
 
                 <div class="guide-col-img scroll-animate">
-                    <img src="img/boneca.webp" alt="Ilustração de Apoio" class="boneca-img" loading="lazy" decoding="async">
+                    <img src="img/boneca-fast.webp" alt="Ilustração de Apoio" class="boneca-img" width="900" height="1352" loading="lazy" decoding="async">
                 </div>
 
             </div>
@@ -657,7 +659,7 @@
 
         <div class="container footer-container">
             <div class="footer-brand">
-                <img src="img/logo2.webp" alt="Delegada Raquel" class="footer-logo-img" loading="lazy" decoding="async">
+                <img src="img/logo2-fast.webp" alt="Delegada Raquel" class="footer-logo-img" width="81" height="80" loading="lazy" decoding="async">
                 <p class="footer-mission">"Nossa missão é garantir que nenhuma mulher sofra em silêncio. A lei está do seu lado."</p>
             </div>
 
@@ -683,31 +685,13 @@
                 <div class="footer-credit">
                     <span>Desenvolvido por</span>
                     <a href="https://agenciafuturadesign.com" class="footer-credit-link" target="_blank" rel="noopener noreferrer" aria-label="Acessar site da Futura Design">
-                        <img src="img/futura-design.webp" alt="Futura Design" class="footer-credit-logo" loading="lazy" decoding="async">
+                        <img src="img/futura-design-fast.webp" alt="Futura Design" class="footer-credit-logo" width="54" height="18" loading="lazy" decoding="async">
                     </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div id="vip-modal" class="modal">
-        <div class="modal-content vip-modal-style">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <div class="modal-header">
-                <i class="fa-brands fa-whatsapp"></i>
-                <h2>Comunidade Oficial</h2>
-            </div>
-            <p class="modal-invite">Cadastre-se para entrar na comunidade oficial e receber a cartilha, orientações e conteúdos de proteção.</p>
-            <form id="lead-form-popup" class="vip-form-popup">
-                <div class="input-icon"><i class="fa-solid fa-user"></i><input type="text" name="Nome" placeholder="Seu Nome Completo" required></div>
-                <div class="input-icon"><i class="fa-solid fa-envelope"></i><input type="email" name="Email" placeholder="Seu Melhor E-mail" required></div>
-                <div class="input-icon"><i class="fa-brands fa-whatsapp"></i><input type="tel" name="WhatsApp" class="phone-mask" placeholder="(DDD) + Número" required maxlength="15"></div>
-                <button type="submit" class="btn-vip btn-popup"><span>Entrar no Grupo</span><i class="fa-solid fa-arrow-right"></i></button>
-                <p class="form-note"><i class="fa-solid fa-lock"></i> Seus dados estão seguros.</p>
-            </form>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <script src="script.js?v=no-popup-img-fast-v2"></script>
 </body>
 </html>
