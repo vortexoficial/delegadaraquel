@@ -1,4 +1,6 @@
 // --- 1. LOADER LOGIC ---
+// O loader só aparece na primeira visita da sessão: um script inline no <head>
+// adiciona a classe "no-loader" ao <html> quando a flag abaixo já existe.
 document.addEventListener("DOMContentLoaded", () => {
     const loader = document.getElementById("loader");
     const progressBar = document.querySelector(".progress-bar");
@@ -6,6 +8,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
     const loaderFallbackDuration = 2800;
     let loaderHidden = false;
+
+    try { sessionStorage.setItem("rq_visited", "1"); } catch (e) { /* modo privado */ }
+
+    if (document.documentElement.classList.contains("no-loader")) {
+        loaderHidden = true;
+        if (loader) {
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+        }
+        body.classList.add("loaded");
+        return;
+    }
 
     setTimeout(() => {
         if (progressBar) progressBar.style.width = "100%";
@@ -105,33 +119,41 @@ function typeEffect() {
 document.addEventListener("DOMContentLoaded", typeEffect);
 
 // --- 5. ANIMAÇÃO SCROLL ---
+// IntersectionObserver com o mesmo ponto de disparo do código anterior
+// (top <= 83% da viewport), sem custo de CPU a cada scroll.
 const scrollElements = document.querySelectorAll(".scroll-animate");
 
-const elementInView = (el, dividend = 1) => {
-  const elementTop = el.getBoundingClientRect().top;
-  return (
-    elementTop <=
-    (window.innerHeight || document.documentElement.clientHeight) / dividend
-  );
-};
+if ("IntersectionObserver" in window) {
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                scrollObserver.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: "0px 0px -17% 0px" });
 
-const displayScrollElement = (element) => {
-  element.classList.add("visible");
-};
+    scrollElements.forEach((el) => scrollObserver.observe(el));
+} else {
+    const elementInView = (el, dividend = 1) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+            elementTop <=
+            (window.innerHeight || document.documentElement.clientHeight) / dividend
+        );
+    };
 
-const handleScrollAnimation = () => {
-  scrollElements.forEach((el) => {
-    if (elementInView(el, 1.2)) {
-      displayScrollElement(el);
-    }
-  });
-};
+    const handleScrollAnimation = () => {
+        scrollElements.forEach((el) => {
+            if (elementInView(el, 1.2)) {
+                el.classList.add("visible");
+            }
+        });
+    };
 
-window.addEventListener("scroll", () => {
-  handleScrollAnimation();
-});
-
-handleScrollAnimation();
+    window.addEventListener("scroll", handleScrollAnimation);
+    handleScrollAnimation();
+}
 
 // --- 6. ANIMAÇÃO DESTAQUE MOBILE (STATS) ---
 if (window.innerWidth < 969) {
