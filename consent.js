@@ -21,7 +21,7 @@ const META_PIXEL_ID = "COLOQUE_SEU_PIXEL_ID_AQUI";
     // --- Carrega o Meta Pixel (apenas após consentimento) ---
     function loadMetaPixel() {
         if (!META_PIXEL_ID || META_PIXEL_ID === "COLOQUE_SEU_PIXEL_ID_AQUI") {
-            console.warn("[Pixel] META_PIXEL_ID não configurado em consent.js — Pixel não carregado.");
+            console.warn("[Pixel] META_PIXEL_ID não configurado em consent.js. Pixel não carregado.");
             return;
         }
         if (window.fbq) return; // já carregado
