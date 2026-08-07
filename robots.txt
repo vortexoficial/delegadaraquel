@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /button-preview.html
+
+Sitemap: https://delegadaraquel.com.br/sitemap.xml

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro confirmado | Delegada Raquel Gallinati</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#0a1f44">
+    <link rel="icon" type="image/webp" href="img/favicon-fast.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #06152f 0%, #0a1f44 54%, #031026 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 20px;
+        }
+        .box { max-width: 560px; }
+        .check {
+            width: 84px; height: 84px; border-radius: 50%;
+            background: rgba(37, 211, 102, 0.15); border: 2px solid #25d366;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px; font-size: 2.4rem; color: #25d366;
+        }
+        h1 { font-size: 1.7rem; margin-bottom: 12px; }
+        h1 span { color: #ffcc00; }
+        p { font-size: 0.98rem; opacity: 0.85; line-height: 1.65; margin-bottom: 26px; }
+        a.btn {
+            display: inline-block; background: #25d366; color: #06152f;
+            font-weight: 700; text-decoration: none; padding: 16px 38px;
+            border-radius: 50px; transition: transform 0.25s ease; font-size: 1rem;
+        }
+        a.btn:hover { transform: translateY(-3px); }
+        .redirect-note { font-size: 0.8rem; opacity: 0.55; margin-top: 18px; margin-bottom: 0; }
+        .home-link { display: inline-block; margin-top: 26px; color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+    </style>
+</head>
+<body data-pixel-event="Lead">
+    <div class="box">
+        <div class="check">&#10003;</div>
+        <h1>Cadastro confirmado. <span>Você não está sozinha.</span></h1>
+        <p>Seu lugar na comunidade oficial está garantido. Estamos te levando para o grupo do WhatsApp — lá você recebe a cartilha, orientações de proteção e conteúdos em primeira mão.</p>
+        <a class="btn" id="whats-link" href="https://chat.whatsapp.com/EntL1sQQhLh3v3cE8vLqfA">Entrar no grupo agora &#8594;</a>
+        <p class="redirect-note">Você será redirecionada automaticamente em alguns segundos&hellip;</p>
+        <a class="home-link" href="index.html">Voltar ao site</a>
+    </div>
+
+    <script src="consent.js?v=lgpd-v2"></script>
+    <script>
+        setTimeout(() => {
+            window.location.href = document.getElementById('whats-link').href;
+        }, 5000);
+    </script>
+</body>
+</html>

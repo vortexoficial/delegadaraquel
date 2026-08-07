@@ -2961,3 +2961,155 @@ body {
 .scroll-animate.visible { opacity: 1; transform: translateY(0); }
 .fade-in-up { opacity: 0; animation: fadeInUp 0.65s forwards 0.15s; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================================================
+   SEÇÃO DE CONTATO (#contato)
+   ============================================================ */
+.contact-section { background-color: var(--bg-light); }
+.contact-title { margin-bottom: 45px; }
+.contact-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--secondary); margin-bottom: 14px;
+}
+.contact-kicker i { color: var(--accent); }
+.contact-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    max-width: 1050px; margin: 0 auto;
+}
+.contact-card {
+    background: var(--white); border: 1px solid rgba(10, 31, 68, 0.08);
+    border-radius: var(--radius); padding: 28px 20px; text-align: center;
+    text-decoration: none; color: var(--text-dark);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(10, 31, 68, 0.12);
+    border-color: rgba(255, 204, 0, 0.55);
+}
+.contact-card-icon {
+    width: 54px; height: 54px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10, 31, 68, 0.06); color: var(--primary);
+    font-size: 1.4rem; margin-bottom: 6px;
+}
+.contact-icon-whats { background: rgba(37, 211, 102, 0.12); color: #1da851; }
+.contact-icon-insta { background: rgba(225, 48, 108, 0.1); color: #e1306c; }
+.contact-icon-face { background: rgba(24, 119, 242, 0.1); color: #1877f2; }
+.contact-card strong { font-size: 1rem; color: var(--primary); }
+.contact-card span { font-size: 0.85rem; color: var(--text-light); word-break: break-word; }
+.contact-form-note { text-align: center; margin-top: 35px; font-size: 0.95rem; color: var(--text-light); }
+.contact-form-note a { color: var(--secondary); font-weight: 700; }
+
+@media (max-width: 968px) {
+    .contact-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .contact-card { padding: 22px 14px; }
+}
+@media (max-width: 480px) {
+    .contact-card span { font-size: 0.78rem; }
+}
+
+/* ============================================================
+   FOOTER — BLOCO LEGAL
+   ============================================================ */
+.footer-legal { margin-bottom: 25px; }
+.footer-legal-name { font-size: 0.9rem; font-weight: 700; opacity: 0.85; margin-bottom: 6px; }
+.footer-legal-info { font-size: 0.8rem; opacity: 0.6; line-height: 1.6; }
+.footer-legal-info a { color: var(--white); text-decoration: underline; }
+.footer-legal-info a:hover { color: var(--accent); }
+
+@media (max-width: 968px) {
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px 18px; margin-bottom: 20px; }
+    .footer-bottom { justify-content: center; }
+}
+
+/* ============================================================
+   BANNER DE COOKIES (LGPD)
+   ============================================================ */
+.cookie-banner {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 99990;
+    background: var(--primary);
+    border-top: 3px solid var(--accent);
+    box-shadow: 0 -8px 30px rgba(3, 16, 38, 0.45);
+    padding: 18px 0;
+    animation: cookieSlideUp 0.45s ease-out;
+}
+@keyframes cookieSlideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+.cookie-banner-inner {
+    width: 90%; max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 25px;
+}
+.cookie-banner-text { color: var(--white); }
+.cookie-banner-text strong {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.95rem; margin-bottom: 4px;
+}
+.cookie-banner-text strong i { color: var(--accent); }
+.cookie-banner-text p { font-size: 0.82rem; opacity: 0.85; line-height: 1.55; margin: 0; }
+.cookie-banner-text a { color: var(--accent); text-decoration: underline; }
+.cookie-banner-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-btn {
+    font-family: var(--font-main); font-weight: 700; font-size: 0.85rem;
+    padding: 11px 24px; border-radius: 50px; cursor: pointer;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.cookie-btn:hover { transform: translateY(-2px); }
+.cookie-btn-accept {
+    background: var(--accent); color: var(--primary); border: 2px solid var(--accent);
+}
+.cookie-btn-reject {
+    background: transparent; color: var(--white); border: 2px solid rgba(255, 255, 255, 0.4);
+}
+.cookie-btn-reject:hover { border-color: rgba(255, 255, 255, 0.8); }
+
+@media (max-width: 768px) {
+    .cookie-banner-inner { flex-direction: column; align-items: stretch; gap: 14px; }
+    .cookie-banner-actions { justify-content: stretch; }
+    .cookie-btn { flex: 1; padding: 12px 10px; }
+}
+
+/* ============================================================
+   PÁGINAS LEGAIS (Política de Privacidade / Termos de Uso)
+   ============================================================ */
+.legal-page { background-color: var(--bg-light); }
+.legal-header {
+    background: var(--primary); border-bottom: 3px solid var(--accent);
+    padding: 16px 0; position: sticky; top: 0; z-index: 100;
+}
+.legal-header-inner { display: flex; align-items: center; justify-content: space-between; }
+.legal-logo-link { display: inline-flex; }
+.legal-back-link {
+    color: var(--white); text-decoration: none; font-size: 0.88rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px; opacity: 0.85; transition: 0.3s;
+}
+.legal-back-link:hover { color: var(--accent); opacity: 1; }
+.legal-content { padding: 60px 0 80px; }
+.legal-container { max-width: 820px; background: var(--white); border-radius: var(--radius); padding: 50px 55px; border: 1px solid rgba(10, 31, 68, 0.08); }
+.legal-container h1 { color: var(--primary); font-size: 2rem; margin-bottom: 8px; }
+.legal-updated { font-size: 0.82rem; color: var(--text-light); margin-bottom: 30px; }
+.legal-container h2 {
+    color: var(--primary); font-size: 1.2rem; margin: 32px 0 12px;
+    padding-top: 18px; border-top: 1px solid rgba(10, 31, 68, 0.08);
+}
+.legal-container h3 { color: var(--secondary); font-size: 1rem; margin: 18px 0 8px; }
+.legal-container p { font-size: 0.95rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 12px; }
+.legal-container ul { margin: 0 0 14px 22px; }
+.legal-container li { font-size: 0.95rem; line-height: 1.7; margin-bottom: 6px; }
+.legal-container a { color: var(--secondary); font-weight: 600; }
+.legal-footer { background: var(--primary); color: var(--white); padding: 25px 0; border-top: 3px solid var(--accent); }
+.legal-footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.legal-footer-inner p { font-size: 0.82rem; opacity: 0.7; margin: 0; }
+.legal-footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.legal-footer-links a { color: var(--white); text-decoration: none; font-size: 0.82rem; opacity: 0.8; transition: 0.3s; }
+.legal-footer-links a:hover { color: var(--accent); opacity: 1; }
+
+@media (max-width: 768px) {
+    .legal-container { padding: 32px 22px; }
+    .legal-container h1 { font-size: 1.6rem; }
+    .legal-footer-inner { justify-content: center; text-align: center; }
+}

@@ -172,9 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- CONFIGURAÇÕES (INSIRA SEUS LINKS AQUI) ---
     // Link do AppScript da Planilha Google
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyZ3D48pxctW99lqw_9MdfloS5y1U69r2BCVphkx6jG5WPl-_apZ1pEHrhN1EA8jwkQ/exec"; 
-    // Link do Grupo do WhatsApp
-    const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/EntL1sQQhLh3v3cE8vLqfA"; 
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyZ3D48pxctW99lqw_9MdfloS5y1U69r2BCVphkx6jG5WPl-_apZ1pEHrhN1EA8jwkQ/exec";
+    // O link do grupo do WhatsApp fica em obrigada.html (destino após o cadastro)
 
     // --- LÓGICA DO POPUP ACIONADO PELO CTA ---
     const modal = document.getElementById('vip-modal');
@@ -244,10 +243,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 await new Promise(r => setTimeout(r, 1000)); 
             }
 
-            // Sucesso: fecha modal se for o popup e redireciona
+            // Sucesso: fecha modal se for o popup e vai para a página de obrigada,
+            // que registra a conversão (Lead) no Meta Pixel e redireciona ao grupo.
             if(formId === 'lead-form-popup') closeModal();
             form.reset();
-            window.location.href = WHATSAPP_GROUP_URL;
+            window.location.href = "obrigada.html";
 
         } catch (error) {
             console.error("Erro no envio:", error);
