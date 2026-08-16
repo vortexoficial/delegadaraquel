@@ -1,0 +1,418 @@
+/* ==========================================================================
+   PROPOSTAS — carrossel 3D de vídeos verticais + leitura expandida
+   Paleta: azul #0a1f44 / #16337F, amarelo #FFD400, verde PSD #77b800
+   ========================================================================== */
+
+.propostas-section {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0 74px;
+    background: linear-gradient(180deg, #0a1f44 0%, #0D2054 52%, #14307a 100%);
+    color: var(--white);
+}
+
+.propostas-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(760px 420px at 78% -8%, rgba(29,70,168,.55), transparent 62%),
+        repeating-linear-gradient(115deg, rgba(255,255,255,.028) 0 2px, transparent 2px 46px);
+}
+.propostas-section > * { position: relative; z-index: 1; }
+
+/* --- cabeçalho --- */
+.propostas-head { max-width: 700px; margin: 0 auto 34px; text-align: center; }
+
+.propostas-kicker {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: #FFD400; margin-bottom: 13px;
+}
+.propostas-head h2 {
+    font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+    font-weight: 800; line-height: 1.08; margin-bottom: 11px; color: var(--white);
+}
+.propostas-head h2 .highlight { color: #FFD400; }
+.propostas-lead {
+    font-size: clamp(.95rem, 2.4vw, 1.05rem); line-height: 1.6;
+    color: rgba(255,255,255,.78); max-width: 56ch; margin: 0 auto;
+}
+
+/* --- palco 3D --- */
+.propostas-stage {
+    --card-w: clamp(262px, 25vw, 344px);
+    position: relative;
+    min-height: 590px; /* piso: vale mesmo se o calc abaixo falhar */
+    min-height: calc(var(--card-w, 320px) * 16 / 9);
+    perspective: 1500px;
+    perspective-origin: 50% 46%;
+    touch-action: pan-y;
+}
+
+/* fantasma em fluxo normal: garante que o palco tenha exatamente a altura
+   do card. Sem ele os cards (absolutos) escapavam por cima do título. */
+.propostas-sizer {
+    width: var(--card-w, 320px);
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.propostas-3d {
+    position: absolute; inset: 0;
+    transform-style: preserve-3d;
+    cursor: grab;
+}
+.propostas-3d.is-dragging { cursor: grabbing; }
+
+.proposta-slide {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: var(--card-w, 320px);
+    aspect-ratio: 9 / 16;
+    margin: 0;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+    /* SEM transform aqui: quem centraliza e o GSAP (xPercent/yPercent).
+       Com os dois, o deslocamento dobrava e o card subia por cima do titulo. */
+}
+
+.proposta-card3d {
+    position: relative;
+    cursor: pointer;
+    width: 100%; height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0D2054;
+    border: 1px solid rgba(255,255,255,.16);
+    box-shadow: 0 34px 70px -30px rgba(0,0,0,.9);
+}
+
+.proposta-slide.is-active .proposta-card3d {
+    border-color: rgba(255,212,0,.55);
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,.95), 0 0 0 3px rgba(255,212,0,.16);
+}
+
+.proposta-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    background: #0D2054;
+}
+
+/* véu que garante leitura do texto sobre o vídeo */
+.proposta-veil {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(10,31,68,0) 34%, rgba(10,31,68,.72) 68%, rgba(8,22,52,.96) 100%);
+    pointer-events: none;
+}
+
+.proposta-tag {
+    position: absolute; top: 14px; left: 14px;
+    font-size: .64rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+    color: #0a1f44; background: #FFD400;
+    padding: 5px 11px; border-radius: 999px;
+}
+
+.proposta-modal-mute {
+    position: absolute;
+    z-index: 3;
+    top: 12px; right: 12px;
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    background: rgba(10,31,68,.62);
+    color: #fff;
+    font-size: .82rem;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+.proposta-modal-mute:hover { background: rgba(10,31,68,.85); }
+.proposta-modal-mute:focus-visible { outline: 2px solid #FFD400; outline-offset: 2px; }
+
+/* começo da proposta, sobre o vídeo */
+.proposta-teaser {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 18px 18px 20px;
+    display: flex; flex-direction: column; gap: 7px;
+}
+.proposta-teaser h3 {
+    font-size: 1.06rem; font-weight: 800; line-height: 1.24; color: var(--white);
+}
+.proposta-teaser p {
+    font-size: .855rem; line-height: 1.55; color: rgba(255,255,255,.82);
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.proposta-expand {
+    margin-top: 6px;
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    color: #FFD400;
+    background: rgba(255,212,0,.12);
+    border: 1px solid rgba(255,212,0,.45);
+    padding: 8px 14px; border-radius: 999px;
+}
+
+/* --- controles --- */
+.propostas-nav {
+    position: absolute; top: 38%; z-index: 6;
+    width: 48px; height: 48px; margin-top: -24px;
+    display: grid; place-items: center;
+    border: none; border-radius: 50%;
+    background: #FFD400; color: #0a1f44;
+    font-size: 1rem; cursor: pointer;
+    box-shadow: 0 14px 30px -14px rgba(255,212,0,.95);
+}
+.propostas-nav.prev { left: max(12px, 3vw); }
+.propostas-nav.next { right: max(12px, 3vw); }
+.propostas-nav:disabled { opacity: .3; cursor: default; box-shadow: none; }
+.propostas-nav:focus-visible { outline: 3px solid rgba(255,255,255,.9); outline-offset: 3px; }
+
+.propostas-dots {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-top: 26px;
+}
+.propostas-dot {
+    width: 9px; height: 9px; padding: 0; border: none; border-radius: 999px;
+    background: rgba(255,255,255,.3); cursor: pointer;
+}
+.propostas-dot.is-active { background: #FFD400; width: 26px; }
+
+.propostas-hint {
+    display: none;
+    align-items: center; justify-content: center; gap: 8px;
+    margin-top: 12px;
+    font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+}
+.propostas-hint i { font-size: .8rem; color: rgba(255,212,0,.75); }
+
+/* estado inicial só quando o GSAP assume */
+.propostas-section.anim-ready .propostas-head > *,
+.propostas-section.anim-ready .proposta-slide,
+.propostas-section.anim-ready .propostas-dots { opacity: 0; }
+
+/* ==========================================================================
+   MODAL — vídeo expandido + balão com a proposta completa
+   ========================================================================== */
+.proposta-modal {
+    position: fixed; inset: 0; z-index: 4000;
+    display: none;
+    align-items: center; justify-content: center;
+    padding: clamp(12px, 3vw, 34px);
+    padding-bottom: clamp(92px, 12vh, 118px);   /* lugar da barra de apoio */
+}
+.proposta-modal.is-open { display: flex; }
+
+.proposta-modal-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(4, 12, 32, .82);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+}
+
+.proposta-modal-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: min(760px, 100%);
+    height: 100%;
+    overflow: hidden;          /* quem rola e o balao, nunca o modal */
+    outline: none;
+}
+
+.proposta-modal-video {
+    position: relative;
+    flex: none;
+    aspect-ratio: 9 / 16;
+    height: min(60vh, 560px);
+    width: auto;
+    max-width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0D2054;
+    border: 1px solid rgba(255,212,0,.4);
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,.95);
+    transition: height .55s cubic-bezier(.4,0,.2,1);
+}
+/* ao abrir a proposta, o video encolhe e cede espaco para a leitura */
+.proposta-modal.is-lendo .proposta-modal-video { height: min(34vh, 330px); }
+.proposta-modal-video .proposta-video { position: absolute; inset: 0; }
+
+/* coluna: vídeo + botão andam juntos */
+.proposta-modal-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: none;
+}
+
+/* Desktop lendo a proposta: duas colunas, o vídeo continua grande e o texto
+   ocupa a lateral. Nada de encolher o vídeo nem de rolar o modal inteiro. */
+@media (min-width: 861px) {
+    .proposta-modal-inner { width: min(1200px, 100%); }
+
+    .proposta-modal.is-lendo .proposta-modal-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(24px, 3vw, 44px);
+    }
+    .proposta-modal.is-lendo .proposta-modal-video { height: min(58vh, 540px); }
+    .proposta-modal.is-lendo .proposta-balao {
+        width: min(560px, 46vw);
+        max-height: min(58vh, 540px);
+    }
+    /* o biquinho do balao aponta para o video */
+    .proposta-modal.is-lendo .proposta-balao-inner::before {
+        top: 42px; left: -9px;
+        transform: rotate(-45deg);
+    }
+}
+
+.proposta-modal-text { display: none; }
+
+
+
+.proposta-ler {
+    margin-top: 0;
+    display: inline-flex; align-items: center; gap: 10px;
+    border: none; cursor: pointer;
+    font-family: inherit; font-weight: 800; font-size: .92rem; letter-spacing: .02em;
+    color: #0a1f44; background: #FFD400;
+    padding: 14px 30px; border-radius: 999px;
+    box-shadow: 0 14px 34px -14px rgba(255,212,0,.9);
+}
+.proposta-ler[hidden] { display: none; }
+
+/* o balão com a proposta completa */
+.proposta-balao {
+    position: relative;
+    width: min(640px, 100%);
+    max-height: 44vh;
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,212,0,.55) transparent;
+}
+.proposta-balao::-webkit-scrollbar { width: 5px; background: transparent; }
+.proposta-balao::-webkit-scrollbar-thumb {
+    background: rgba(255,212,0,.5);
+    border: 0;
+    border-radius: 99px;
+}
+.proposta-balao::-webkit-scrollbar-track { background: transparent; }
+.proposta-balao-inner {
+    position: relative;
+    margin-right: 4px;
+    background: rgba(255,255,255,.075);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 18px;
+    padding: 20px 22px;
+}
+.proposta-balao-inner::before {
+    content: '';
+    position: absolute; top: -9px; left: 32px;
+    width: 16px; height: 16px;
+    background: inherit;
+    border-left: 1px solid rgba(255,255,255,.16);
+    border-top: 1px solid rgba(255,255,255,.16);
+    transform: rotate(45deg);
+}
+.proposta-balao-inner h4 {
+    font-size: 1.18rem; font-weight: 800; line-height: 1.2;
+    color: #FFD400; margin-bottom: 12px;
+}
+.proposta-balao-inner p {
+    font-size: .96rem; line-height: 1.72; color: rgba(255,255,255,.88);
+}
+.proposta-balao-inner p + p { margin-top: 12px; }
+
+.proposta-close {
+    position: fixed; top: clamp(14px,2.4vw,30px); right: clamp(14px,2.4vw,30px); z-index: 5;
+    width: 48px; height: 48px;
+    transition: background .2s ease, transform .2s ease;
+    display: grid; place-items: center;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 50%;
+    background: rgba(10,31,68,.92);
+    color: #fff; font-size: 1.05rem; cursor: pointer;
+}
+.proposta-close:hover { background: rgba(22,51,127,.95); transform: scale(1.06); }
+.proposta-close:focus-visible { outline: 3px solid #FFD400; outline-offset: 2px; }
+
+/* barra fixa: a conversão mora aqui, sempre visível no rodapé do vídeo */
+.proposta-apoio-bar {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+    padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(to top, rgba(4,12,32,.94) 42%, rgba(4,12,32,0));
+    pointer-events: none;
+}
+.proposta-apoio {
+    pointer-events: auto;
+    display: inline-flex; align-items: center; gap: 11px;
+    max-width: 100%;
+    font-family: inherit; font-weight: 800; font-size: clamp(.92rem, 3.4vw, 1.02rem);
+    letter-spacing: .01em; line-height: 1;
+    color: #fff; text-decoration: none;
+    background: #58B947;
+    padding: 16px 34px; border-radius: 999px;
+    box-shadow: 0 16px 38px -14px rgba(88,185,71,.95), 0 6px 18px -10px rgba(0,0,0,.6);
+    transition: background .22s ease, transform .22s ease;
+}
+.proposta-apoio:hover { background: #63cc50; transform: translateY(-2px); }
+.proposta-apoio .zap { width: 21px; height: 21px; fill: currentColor; flex: none; }
+.proposta-apoio:focus-visible { outline: 3px solid #FFD400; outline-offset: 3px; }
+
+body.proposta-modal-open,
+html.proposta-modal-open { overflow: hidden; }
+body.proposta-modal-open .cookie-banner,
+body.proposta-modal-open .navbar { display: none; }
+
+/* --- telas pequenas: vídeo em cima, texto embaixo --- */
+@media (max-width: 860px) {
+    .propostas-section { padding: 52px 0 58px; }
+    .propostas-head { margin-bottom: 24px; }
+
+    /* card bem maior: o video story ocupa quase a largura da tela */
+    .propostas-stage { --card-w: min(80vw, 370px); min-height: 540px; min-height: calc(var(--card-w, 320px) * 16 / 9); }
+    .proposta-teaser { padding: 16px 16px 18px; }
+
+    /* setas fora do caminho; quem manda e o arraste */
+    .propostas-nav { display: none; }
+    .propostas-hint { display: flex; }
+
+    .proposta-modal-inner {
+        gap: 14px;
+        height: auto;
+        max-height: 100%;
+        overflow-y: auto;
+        justify-content: flex-start;
+        padding: 6px 0 10px;
+    }
+    .proposta-balao { max-height: none; flex: none; }  /* no celular quem rola e o modal */
+    .proposta-modal-video { height: min(52vh, 440px); }
+    .proposta-modal.is-lendo .proposta-modal-video { height: min(28vh, 260px); }
+    .proposta-close { width: 42px; height: 42px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .propostas-section.anim-ready .propostas-head > *,
+    .propostas-section.anim-ready .propostas-dots { opacity: 1; }
+    .proposta-modal-backdrop { opacity: 1; }
+}
+.proposta-video-vazio{background:linear-gradient(135deg,#1D46A8,#0D2054)}

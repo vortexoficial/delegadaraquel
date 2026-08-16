@@ -19,8 +19,8 @@
     -->
 
     <link rel="icon" type="image/webp" href="img/favicon-fast.webp">
-    <link rel="preload" as="image" href="img/hero-mobile-fast.webp" type="image/webp" media="(max-width: 1023px)" fetchpriority="high">
-    <link rel="preload" as="image" href="img/hero-desktop-fast.webp" type="image/webp" media="(min-width: 1024px)" fetchpriority="high">
+    <link rel="preload" as="image" href="img/hero-novo-mobile.webp" type="image/webp" media="(max-width: 1023px)" fetchpriority="high">
+    <link rel="preload" as="image" href="img/hero-novo-desktop.webp" type="image/webp" media="(min-width: 1024px)" fetchpriority="high">
 
     <meta property="og:locale" content="pt_BR">
     <meta property="og:type" content="website">
@@ -78,8 +78,6 @@
     }
     </script>
 
-    <script>try{if(sessionStorage.getItem("rq_visited"))document.documentElement.classList.add("no-loader")}catch(e){}</script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -88,29 +86,110 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="style.min.css?v=perf-v1">
+
+    <link rel="stylesheet" href="propostas.css?v=16">
+    <style id="hero-novo-css">
+    /* --- HERO DA CAMPANHA (arte inteira, sem corte, botao dentro da arte) --- */
+    .hero.hero-novo{
+        display:block; position:relative; overflow:hidden;
+        min-height:0; height:auto; align-items:stretch;
+        background:linear-gradient(90deg,#285A95 0%,#174A83 50%,#002F67 100%); background-image:none !important;
+        padding-top:var(--nav-h); /* encosta exatamente na navbar, sem faixa */
+    }
+    .hero.hero-novo .hero-novo-img{
+        display:block; width:100%; height:auto;
+        aspect-ratio:827/1278; /* arte vertical (celular) */
+    }
+    .hero-novo-cta{
+        position:absolute; z-index:4;
+        left:50%; transform:translateX(-50%); bottom:6.5%;
+        display:inline-flex; align-items:center; gap:11px;
+        background:#0D2054; color:#F9D60A; border:none;
+        font-family:inherit; font-weight:700; letter-spacing:.02em;
+        font-size:clamp(15px,4vw,17px); line-height:1;
+        text-decoration:none; white-space:nowrap;
+        padding:16px 38px; border-radius:999px;
+        box-shadow:0 12px 40px -6px rgba(0,0,0,.45), 0 8px 30px -10px rgba(13,32,84,.65);
+        transition:background .25s ease;
+        animation:heroCtaPop .6s cubic-bezier(.2,.9,.3,1.4) .4s both,
+                  heroCtaPulse 1.9s ease-in-out 1.4s infinite;
+    }
+    .hero-novo-cta:hover{ background:#16337F; }
+    .hero-novo-cta svg{
+        width:18px; height:18px; flex:none;
+        stroke:#F9D60A; stroke-width:2.4; fill:none;
+        stroke-linecap:round; stroke-linejoin:round;
+    }
+    @keyframes heroCtaPop{
+        from{ opacity:0; transform:translateX(-50%) translateY(20px) scale(.8); }
+        to{ opacity:1; transform:translateX(-50%) translateY(0) scale(1); }
+    }
+    @keyframes heroCtaPulse{
+        0%,100%{ transform:translateX(-50%) scale(1); }
+        50%{ transform:translateX(-50%) scale(1.045); }
+    }
+    @media (min-width:1024px){
+        .hero.hero-novo .hero-novo-img{ aspect-ratio:7914/3898; } /* arte horizontal */
+        .hero-novo-cta{ bottom:12%; font-size:clamp(15px,1.15vw,18px); }
+    }
+    @media (prefers-reduced-motion: reduce){
+        .hero-novo-cta{ animation:none; transition:none; }
+    }
+
+    /* --- FAIXA ANIMADA EM AZUL (itens amarelos e brancos) --- */
+    .section-luminous-divider{
+        background:linear-gradient(90deg,#0B1C4A 0%,#16337F 28%,#1D46A8 50%,#16337F 72%,#0B1C4A 100%);
+        color:var(--white);
+        box-shadow:
+            0 0 22px rgba(22,51,127,.45),
+            inset 0 10px 20px rgba(255,255,255,.10),
+            inset 0 -10px 20px rgba(6,16,44,.35);
+    }
+    .section-luminous-divider::before,
+    .section-luminous-divider::after{
+        background:linear-gradient(
+            90deg,
+            rgba(255,212,0,.18),
+            rgba(255,212,0,.75),
+            #ffffff,
+            rgba(255,212,0,.8),
+            rgba(255,212,0,.18)
+        );
+        background-size:240% 100%;
+        box-shadow:0 0 12px rgba(255,255,255,.5), 0 0 18px rgba(255,212,0,.55);
+    }
+    /* itens alternando amarelo e branco */
+    .section-luminous-divider .divider-group span:nth-child(odd){ color:#FFD400; }
+    .section-luminous-divider .divider-group span:nth-child(even){ color:#FFFFFF; }
+    .section-luminous-divider .divider-group i{
+        color:inherit;
+        filter:drop-shadow(0 0 6px rgba(255,212,0,.35));
+    }
+
+    /* --- LOGO HORIZONTAL OFICIAL (proporção 4.17:1) ---
+       A navbar ganha altura fixa para o hero encostar nela sem sobrar
+       nenhuma faixa azul entre o menu e a arte. --- */
+    :root{ --nav-h:54px; }
+    @media (max-width:560px){ :root{ --nav-h:46px; } }
+    .navbar{ height:var(--nav-h); padding:0; display:flex; align-items:center; }
+    .navbar .nav-container{ width:90%; max-width:1200px; margin:0 auto; }
+    @media (max-width:560px){ .navbar .nav-container{ width:88%; } }
+    .logo-img{ max-height:40px; width:auto; height:auto; display:block; }
+    @media (max-width:560px){ .logo-img{ max-height:31px; } }
+    .footer-logo-img{ width:min(250px,64vw); height:auto; max-height:none; border-radius:0; }
+    </style>
 </head>
 <body>
-
-    <div id="loader">
-        <div class="loader-content" role="status" aria-live="polite">
-            <div class="loader-logo-shell">
-                <img src="logosvg.svg?v=loader-outline-up-v1" alt="" class="loader-logo-animated loader-logo-outline" aria-hidden="true">
-                <img src="logosvg-fill.svg?v=loader-water-fill-v4" alt="Delegada Raquel" class="loader-logo-fill">
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar"></div>
-            </div>
-        </div>
-    </div>
 
     <nav class="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <img src="img/logo-fast.webp" alt="Delegada Raquel" class="logo-img" width="132" height="45" decoding="async">
+                <img src="img/logo-horizontal.webp" alt="Delegada Raquel 55.550 - Deputada Estadual" class="logo-img" width="700" height="168" decoding="async" fetchpriority="high">
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Quem Sou</a></li>
+                <li><a href="#propostas">Propostas</a></li>
                 <li><a href="#cartilha">A Cartilha</a></li>
                 <li><a href="#comunidade">Comunidade</a></li>
                 <li><a href="#contato">Contato</a></li>
@@ -124,18 +203,15 @@
         </div>
     </nav>
 
-    <section id="inicio" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-container">
-            <div class="hero-text fade-in-up">
-                <h1>Você não tem culpa.<br>Existe <span class="highlight typing-text">saída</span>.</h1>
-                <p>Entre na comunidade oficial para receber orientação, conteúdos de proteção e acesso à cartilha digital.</p>
-                <div class="hero-btns">
-                    <a href="#vip-modal" class="btn btn-primary btn-orbit-glow" data-open-vip-modal><span>Entrar na Comunidade</span></a>
-                    <a href="#cartilha" class="btn btn-outline shine-effect">Ler Cartilha Digital</a>
-                </div>
-            </div>
-        </div>
+    <section id="inicio" class="hero hero-novo">
+        <picture>
+            <source media="(max-width: 1023px)" srcset="img/hero-novo-mobile.webp">
+            <img class="hero-novo-img" src="img/hero-novo-desktop.webp" fetchpriority="high" alt="Delegada Raquel, 55.550, Deputada Estadual. Onde ha coragem, ha protecao.">
+        </picture>
+        <a class="hero-novo-cta" href="https://wa.me/5513988010886?text=Eu%20apoio%20a%20Delegada%20Raquel%2C%20como%20fa%C3%A7o%20para%20votar%3F" target="_blank" rel="noopener">
+            Falar com a Raquel
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
     </section>
 
     <div class="section-luminous-divider" aria-hidden="true">
@@ -158,6 +234,99 @@
             </div>
         </div>
     </div>
+
+    <section id="propostas" class="propostas-section" data-api="https://coragemparamudar.online/api/propostas">
+        <div class="container">
+            <header class="propostas-head">
+                <span class="propostas-kicker"><i class="fa-solid fa-list-check"></i> Propostas</span>
+                <h2>O que eu vou <span class="highlight">defender</span> na Assembleia</h2>
+                <p class="propostas-lead">Cada proposta em um vídeo curto. Toque no vídeo para abrir e ler a proposta completa.</p>
+            </header>
+        </div>
+
+        <div class="propostas-stage" id="propostasStage" role="region" aria-label="Carrossel de propostas">
+            <div class="propostas-sizer" aria-hidden="true"></div>
+            <div class="propostas-3d" id="propostas3d">
+                <article class="proposta-slide" data-tag="Proteção à mulher" data-titulo="Delegacia da Mulher 24 horas" data-resumo="Atendimento especializado a qualquer hora, em todas as regiões do estado. Quem procura ajuda não pode ouvir &quot;volte amanhã&quot;." data-texto="Hoje muitas mulheres chegam à delegacia no pior momento da vida e encontram a porta fechada. A violência não tem hora marcada, e o socorro também não pode ter.||Vou trabalhar para que cada região do estado tenha uma Delegacia da Mulher aberta 24 horas, com equipe treinada, sala reservada para o depoimento e atendimento humanizado desde a primeira palavra.||Onde não houver estrutura para a unidade completa, um plantão especializado deve funcionar dentro da delegacia comum, com profissionais capacitados para acolher e registrar o caso na hora.">
+                    <div class="proposta-card3d">
+                        <video class="proposta-video" src="videos/proposta-0.mp4" muted loop playsinline preload="none" disablepictureinpicture></video>
+                        <div class="proposta-veil"></div>
+                        <span class="proposta-tag">Proteção à mulher</span>
+                        <div class="proposta-teaser">
+                            <h3>Delegacia da Mulher 24 horas</h3>
+                            <p>Atendimento especializado a qualquer hora, em todas as regiões do estado. Quem procura ajuda não pode ouvir &quot;volte amanhã&quot;.</p>
+                            <span class="proposta-expand"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Ver proposta</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="proposta-slide" data-tag="Medida protetiva" data-titulo="Patrulha Maria da Penha em cada cidade" data-resumo="Equipes que visitam e acompanham quem tem medida protetiva, para a proteção não terminar no papel do juiz." data-texto="A medida protetiva é uma conquista, mas sozinha ela é apenas um documento. O que salva vidas é o acompanhamento depois que a decisão sai.||A Patrulha Maria da Penha visita periodicamente a mulher protegida, verifica se o agressor está respeitando a decisão e mantém um canal direto com a polícia. Onde ela existe, o descumprimento cai e o feminicídio cai junto.||Minha proposta é levar esse programa a todos os municípios paulistas, com viatura, equipe treinada e integração entre a Polícia Militar, a Guarda Civil e a rede de proteção da cidade.">
+                    <div class="proposta-card3d">
+                        <video class="proposta-video" src="videos/proposta-1.mp4" muted loop playsinline preload="none" disablepictureinpicture></video>
+                        <div class="proposta-veil"></div>
+                        <span class="proposta-tag">Medida protetiva</span>
+                        <div class="proposta-teaser">
+                            <h3>Patrulha Maria da Penha em cada cidade</h3>
+                            <p>Equipes que visitam e acompanham quem tem medida protetiva, para a proteção não terminar no papel do juiz.</p>
+                            <span class="proposta-expand"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Ver proposta</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="proposta-slide" data-tag="Tecnologia" data-titulo="Botão de emergência no celular" data-resumo="Um toque aciona a viatura mais próxima e envia a localização em tempo real, com prioridade para quem está em risco." data-texto="Em uma situação de violência, a mulher raramente tem tempo de explicar onde está. Muitas vezes não tem nem como falar.||O botão de emergência resolve isso: um toque no celular envia a localização em tempo real para a central, que despacha a viatura mais próxima já sabendo que se trata de um caso com medida protetiva.||Quero garantir o aplicativo gratuito, integrado ao sistema da polícia, com prioridade no atendimento e histórico registrado para embasar o processo. Tecnologia simples, que já existe, faltando apenas vontade política de universalizar.">
+                    <div class="proposta-card3d">
+                        <video class="proposta-video" src="videos/proposta-2.mp4" muted loop playsinline preload="none" disablepictureinpicture></video>
+                        <div class="proposta-veil"></div>
+                        <span class="proposta-tag">Tecnologia</span>
+                        <div class="proposta-teaser">
+                            <h3>Botão de emergência no celular</h3>
+                            <p>Um toque aciona a viatura mais próxima e envia a localização em tempo real, com prioridade para quem está em risco.</p>
+                            <span class="proposta-expand"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Ver proposta</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="proposta-slide" data-tag="Segurança pública" data-titulo="Valorização de quem protege" data-resumo="Estrutura, equipamento e cuidado com a saúde mental das polícias. Policial bem preparado é cidadão mais seguro." data-texto="Passei a vida dentro da Polícia Civil e sei o que é trabalhar com viatura quebrada, delegacia sem estrutura e equipe reduzida enquanto a demanda só cresce.||Segurança pública não se faz com discurso: se faz com investimento em pessoal, equipamento, treinamento continuado e condição digna de trabalho.||Também vou defender atenção à saúde mental do policial. Quem convive diariamente com a violência precisa de apoio psicológico de verdade, não de silêncio. Cuidar de quem protege é proteger toda a população.">
+                    <div class="proposta-card3d">
+                        <video class="proposta-video" src="videos/proposta-3.mp4" muted loop playsinline preload="none" disablepictureinpicture></video>
+                        <div class="proposta-veil"></div>
+                        <span class="proposta-tag">Segurança pública</span>
+                        <div class="proposta-teaser">
+                            <h3>Valorização de quem protege</h3>
+                            <p>Estrutura, equipamento e cuidado com a saúde mental das polícias. Policial bem preparado é cidadão mais seguro.</p>
+                            <span class="proposta-expand"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Ver proposta</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="proposta-slide" data-tag="Prevenção" data-titulo="Escola que ensina a se proteger" data-resumo="Educação contra a violência desde cedo, formando meninas que reconhecem o perigo e meninos que aprendem a respeitar." data-texto="A violência doméstica quase nunca começa com uma agressão física. Começa com o ciúme excessivo, o controle, o isolamento da família e das amigas.||Se a menina aprende a reconhecer esses sinais na adolescência, ela sai do ciclo antes de entrar. E se o menino aprende desde cedo o que é respeito, ele simplesmente não se torna um agressor.||Minha proposta é levar programas permanentes de prevenção às escolas estaduais, com linguagem adequada a cada idade, material produzido com especialistas e formação para os professores conduzirem o assunto com segurança.">
+                    <div class="proposta-card3d">
+                        <video class="proposta-video" src="videos/proposta-4.mp4" muted loop playsinline preload="none" disablepictureinpicture></video>
+                        <div class="proposta-veil"></div>
+                        <span class="proposta-tag">Prevenção</span>
+                        <div class="proposta-teaser">
+                            <h3>Escola que ensina a se proteger</h3>
+                            <p>Educação contra a violência desde cedo, formando meninas que reconhecem o perigo e meninos que aprendem a respeitar.</p>
+                            <span class="proposta-expand"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Ver proposta</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="proposta-slide" data-tag="Acolhimento" data-titulo="Casa da Mulher Paulista" data-resumo="Um só endereço com delegacia, apoio jurídico, atendimento psicológico e capacitação para recomeçar a vida." data-texto="Depois da denúncia começa outra maratona: o fórum em um lugar, a assistência social em outro, o psicólogo em um terceiro. Muitas desistem no meio do caminho, e a desistência costuma significar voltar para o agressor.||A Casa da Mulher reúne tudo em um só endereço: delegacia especializada, apoio jurídico, atendimento psicológico, assistência social, acolhimento para os filhos e capacitação profissional.||Autonomia financeira é parte da proteção. A mulher que consegue sustentar a própria casa tem a liberdade de não voltar. Quero uma Casa da Mulher em cada região do estado.">
+                    <div class="proposta-card3d">
+                        <video class="proposta-video" src="videos/proposta-5.mp4" muted loop playsinline preload="none" disablepictureinpicture></video>
+                        <div class="proposta-veil"></div>
+                        <span class="proposta-tag">Acolhimento</span>
+                        <div class="proposta-teaser">
+                            <h3>Casa da Mulher Paulista</h3>
+                            <p>Um só endereço com delegacia, apoio jurídico, atendimento psicológico e capacitação para recomeçar a vida.</p>
+                            <span class="proposta-expand"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Ver proposta</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <button class="propostas-nav prev" type="button" aria-label="Proposta anterior"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="propostas-nav next" type="button" aria-label="Próxima proposta"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div class="propostas-dots" id="propostasDots"></div>
+        <p class="propostas-hint"><i class="fa-solid fa-hand-pointer"></i> Arraste pro lado</p>
+    </section>
 
     <section id="sobre" class="about-authority">
         <div class="container about-grid">
@@ -744,7 +913,7 @@
 
         <div class="container footer-container">
             <div class="footer-brand">
-                <img src="img/logo2-fast.webp" alt="Delegada Raquel" class="footer-logo-img" width="81" height="80" loading="lazy" decoding="async">
+                <img src="img/logo-horizontal.webp" alt="Delegada Raquel 55.550 - Deputada Estadual" class="footer-logo-img" width="700" height="168" loading="lazy" decoding="async">
                 <p class="footer-mission">"Nossa missão é garantir que nenhuma mulher sofra em silêncio. A lei está do seu lado."</p>
             </div>
 
@@ -826,5 +995,25 @@
 
     <script src="consent.js?v=lgpd-v2"></script>
     <script src="script.js?v=perf-v1"></script>
+    <script src="gsap.min.js" defer></script>
+    <script src="propostas.js?v=16" defer></script>
+    <div class="proposta-modal" id="propostaModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Proposta em vídeo">
+        <div class="proposta-modal-backdrop"></div>
+        <div class="proposta-modal-inner">
+            <button class="proposta-close" id="propostaClose" type="button" aria-label="Fechar e voltar ao site"><i class="fa-solid fa-xmark"></i></button>
+            <div class="proposta-modal-col">
+                <div class="proposta-modal-video" id="propostaModalVideo"><button class="proposta-modal-mute" id="propostaMute" type="button" aria-label="Desativar o som"><i class="fa-solid fa-volume-high"></i></button></div>
+                <button class="proposta-ler" id="propostaLer" type="button">Ler proposta <i class="fa-solid fa-arrow-down"></i></button>
+            </div>
+            <div class="proposta-balao" id="propostaBalao"><div class="proposta-balao-inner"></div></div>
+        </div>
+
+        <div class="proposta-apoio-bar" id="propostaApoioBar">
+            <a class="proposta-apoio" href="https://wa.me/5513988010886?text=Eu%20apoio%20a%20causa%20sobre%20viol%C3%AAncia%20contra%20crian%C3%A7as!%20Com%20certeza%20irei%20votar%20na%20Raquel!" target="_blank" rel="noopener">
+                <svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06s.89 2.39 1.01 2.55c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg> Eu apoio essa causa
+            </a>
+        </div>
+    </div>
+
 </body>
 </html>
