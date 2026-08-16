@@ -68,6 +68,17 @@
 }
 .propostas-3d.is-dragging { cursor: grabbing; }
 
+/* Sem JavaScript (ou se o GSAP falhar): um card centralizado, em vez de
+   todos empilhados no canto. O JS marca .js-pronto quando assume o palco. */
+.propostas-3d:not(.js-pronto) { position: relative; }
+.propostas-3d:not(.js-pronto) .proposta-slide { display: none; }
+.propostas-3d:not(.js-pronto) .proposta-slide:first-child {
+    display: block;
+    position: relative;
+    top: auto; left: auto;
+    margin: 0 auto;
+}
+
 .proposta-slide {
     position: absolute;
     top: 50%; left: 50%;

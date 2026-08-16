@@ -163,6 +163,7 @@
     function mount(animateIn) {
         collect();
         /* GSAP passa a ser o unico dono do transform destes cards */
+        deck.classList.add('js-pronto');
         gsap.set(slides, { xPercent: -50, yPercent: -50, x: 0, y: 0, z: 0, rotationY: 0 });
         buildDots();
         measure();
