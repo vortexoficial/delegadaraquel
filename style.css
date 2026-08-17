@@ -514,24 +514,23 @@ body {
 
 @media (min-width: 969px) {
     .about-authority {
-        overflow: visible;
+        overflow: hidden;
         padding-top: 54px;
         padding-bottom: 0;
     }
 
     .about-grid {
         grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
-        align-items: end;
+        align-items: stretch;
         min-height: 0;
     }
 
     .about-img {
-        position: sticky;
-        top: 88px;
-        align-self: end;
-        min-height: clamp(560px, 70vh, 680px);
-        margin-top: 42px;
-        overflow: visible;
+        position: relative;
+        align-self: stretch;
+        min-height: clamp(540px, 68vh, 660px);
+        margin-top: 0;
+        overflow: hidden;
     }
 
     .about-img::before {
@@ -541,11 +540,12 @@ body {
     .img-delegada {
         position: absolute;
         left: 50%;
-        bottom: 0;
+        top: 0;
+        bottom: auto;
         width: auto;
-        max-width: 128%;
+        max-width: 116%;
         min-height: 0;
-        height: calc(100% + 46px);
+        height: 100%;
         max-height: none;
         transform: translateX(-50%);
     }
