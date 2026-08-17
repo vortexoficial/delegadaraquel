@@ -2583,186 +2583,274 @@ body {
 .step.alert { background: #ffebee; color: var(--alert); border: 1px solid var(--alert); }
 .arrow { font-size: 1.5rem; color: var(--primary); font-weight: bold; }
 
-/* --- SESSÃO COMUNIDADE VIP --- */
+/* --- SESSÃO APOIAR CAUSA --- */
 .community-section {
-    background: linear-gradient(135deg, var(--primary) 0%, #051024 100%);
+    background:
+        linear-gradient(118deg, transparent 0 58%, rgba(255,204,0,0.10) 58% 59.5%, transparent 59.5% 100%),
+        linear-gradient(118deg, transparent 0 64%, rgba(119,184,0,0.08) 64% 72%, transparent 72% 100%),
+        linear-gradient(145deg, #07172F 0%, #0A2144 54%, #061326 100%);
     color: var(--white);
     position: relative;
     overflow: hidden;
+    padding: clamp(64px, 7vw, 84px) 0;
 }
 
 .community-section::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(255,204,0,0.05) 0%, rgba(255,204,0,0) 70%);
-    border-radius: 50%;
-    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(255,204,0,0.16), transparent 18%, transparent 82%, rgba(255,255,255,0.05));
+    opacity: 0.72;
+}
+
+.community-section::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--accent), #77B800, var(--secondary));
+    pointer-events: none;
+}
+
+.community-section .container {
+    max-width: 1120px;
 }
 
 .community-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+    gap: clamp(28px, 4.2vw, 50px);
     align-items: center;
     position: relative;
     z-index: 1;
 }
 
 .badge-vip {
-    display: inline-block;
-    background: rgba(255, 204, 0, 0.15);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    background: rgba(255, 204, 0, 0.12);
     color: var(--accent);
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-    border: 1px solid var(--accent);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 0.72rem;
+    margin-bottom: 18px;
+    border: 1px solid rgba(255,204,0,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     white-space: nowrap;
 }
 
 .community-text h2 {
-    font-size: 3rem;
-    line-height: 1.1;
-    margin-bottom: 20px;
+    max-width: 640px;
+    font-size: clamp(2.25rem, 4.35vw, 3.8rem);
+    line-height: 0.98;
+    margin-bottom: 16px;
     color: var(--white);
+    letter-spacing: 0;
 }
 
 .lead-text {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    margin-bottom: 30px;
+    color: var(--accent);
+    font-size: clamp(0.98rem, 1.45vw, 1.18rem);
+    font-weight: 800;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.community-copy {
+    max-width: 600px;
+    color: rgba(255,255,255,0.82);
+    font-size: clamp(0.94rem, 1.15vw, 1.04rem);
+    line-height: 1.58;
+    margin-bottom: 22px;
 }
 
 .benefit-list {
+    display: grid;
+    gap: 8px;
     list-style: none;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    max-width: 600px;
 }
 
 .benefit-list li {
-    display: flex;
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
     align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    font-size: 1.05rem;
-    font-weight: 500;
+    gap: 11px;
+    min-height: 40px;
+    padding: 6px 0;
+    color: var(--white);
+    font-size: 0.94rem;
+    font-weight: 700;
+    line-height: 1.35;
 }
 
 .benefit-list li i {
-    color: var(--accent);
-    background: rgba(255,255,255,0.1);
-    width: 30px;
-    height: 30px;
+    color: var(--primary);
+    background: var(--accent);
+    width: 32px;
+    height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    font-size: 0.9rem;
-    flex-shrink: 0;
+    font-size: 0.84rem;
+    box-shadow: 0 0 0 6px rgba(255,204,0,0.1);
 }
 
 .small-note {
-    font-size: 0.85rem;
-    opacity: 0.6;
+    max-width: 620px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.82rem;
+    line-height: 1.5;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
 }
 
-.community-form-wrapper {
+.small-note i { color: var(--accent); }
+
+.community-action-panel {
+    position: relative;
+    overflow: hidden;
     background: var(--white);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     color: var(--text-dark);
+    padding: clamp(24px, 3vw, 34px);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 22px 48px rgba(0,0,0,0.26);
 }
 
-.vip-form h3 {
+.community-action-panel::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 7px;
+    background: linear-gradient(90deg, var(--accent), #77B800, var(--secondary));
+}
+
+.community-panel-head span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--secondary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.community-panel-head h3 {
     color: var(--primary);
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-    text-align: center;
+    font-size: clamp(1.55rem, 2.25vw, 2rem);
+    line-height: 1.08;
+    margin-bottom: 12px;
 }
 
-.input-group { margin-bottom: 20px; }
-.input-group label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; color: var(--primary); }
-.input-icon { position: relative; }
-.input-icon i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-light); }
-.input-icon input { width: 100%; padding: 15px 15px 15px 45px; border: 2px solid #eee; border-radius: 10px; font-family: var(--font-main); font-size: 1rem; transition: 0.3s; background: #f9f9f9; }
-.input-icon input:focus { border-color: var(--accent); background: var(--white); outline: none; box-shadow: 0 0 0 4px rgba(255, 204, 0, 0.1); }
+.community-panel-head p {
+    color: var(--text-light);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.support-actions {
+    display: grid;
+    gap: 9px;
+    margin-bottom: 20px;
+}
+
+.support-action {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 10px 13px;
+    border-radius: 8px;
+    background: #F4F7FB;
+    border: 1px solid rgba(10,31,68,0.08);
+}
+
+.support-action i {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+.support-action strong {
+    color: var(--primary);
+    font-size: 0.86rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
 
 .btn-vip {
     width: 100%;
-    background: var(--primary);
-    color: var(--white);
+    min-height: 52px;
+    background: #25D366;
+    color: #062A16;
     border: none;
-    padding: 18px;
-    border-radius: 10px;
-    font-size: 1.1rem;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: clamp(0.82rem, 1.05vw, 0.94rem);
     font-weight: 800;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     text-transform: uppercase;
-    margin-top: 10px;
-}
-.btn-vip:hover { background: var(--accent); color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-
-/* --- ESTILOS DO POPUP (MODAL) --- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(10, 31, 68, 0.85);
-    backdrop-filter: blur(5px);
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-content.vip-modal-style {
-    background-color: var(--white);
-    padding: 40px 30px;
-    border-radius: 20px;
-    max-width: 450px;
-    width: 100%;
-    position: relative;
-    border: 2px solid var(--accent);
     text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    animation: zoomIn 0.28s ease-out;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.btn-vip span { min-width: 0; }
+.btn-vip:hover { background: #38E078; color: #062A16; transform: translateY(-3px); box-shadow: 0 14px 28px rgba(37,211,102,0.24); }
+.btn-vip i { font-size: 1.2rem; }
+
+.community-secure-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-light);
+    font-size: 0.76rem;
+    line-height: 1.45;
+    text-align: center;
+    margin-top: 14px;
 }
 
-@keyframes zoomIn { from { transform: scale(0.94); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.community-secure-line i { color: var(--secondary); }
 
-.close-button { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: var(--text-light); cursor: pointer; line-height: 0.5; transition: 0.3s; }
-.close-button:hover { color: var(--alert); }
-
-.modal-header i { font-size: 3rem; color: #25D366; margin-bottom: 10px; }
-.modal-header h2 { color: var(--primary); font-size: 2rem; margin-bottom: 10px; line-height: 1.1; }
-.modal-invite { color: var(--text-light); font-size: 1rem; margin-bottom: 25px; line-height: 1.5; }
-
-.vip-form-popup .input-icon { margin-bottom: 15px; position: relative; }
-.vip-form-popup .input-icon i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1rem; }
-.vip-form-popup input { width: 100%; padding: 14px 15px 14px 45px; border: 1px solid #ddd; border-radius: 8px; font-family: var(--font-main); font-size: 1rem; background: #f8f9fa; transition: 0.3s; }
-.vip-form-popup input:focus { border-color: var(--primary); background: var(--white); outline: none; box-shadow: 0 0 0 3px rgba(10, 31, 68, 0.1); }
-.btn-popup { margin-top: 10px; width: 100%; padding: 16px; font-size: 1rem; }
-.form-note { margin-top: 15px; font-size: 0.8rem; color: #888; display: flex; align-items: center; justify-content: center; gap: 5px; }
-
-@media (max-width: 480px) {
-    .modal-content.vip-modal-style { padding: 30px 20px; }
-    .modal-header h2 { font-size: 1.6rem; }
+@media (max-width: 1180px) {
+    .community-section .container { max-width: 1040px; }
+    .community-section { padding: 58px 0; }
+    .community-grid { grid-template-columns: minmax(0, 1fr) minmax(300px, 410px); gap: 30px; }
+    .community-text h2 { font-size: clamp(2.1rem, 4vw, 3.25rem); max-width: 560px; }
+    .community-copy { font-size: 0.93rem; max-width: 540px; }
+    .community-action-panel { padding: 24px; }
+    .community-panel-head h3 { font-size: clamp(1.45rem, 2vw, 1.8rem); }
+    .support-action strong { font-size: 0.8rem; }
+    .btn-vip { font-size: 0.8rem; }
 }
 
 /* --- EMERGENCY HERO (NOVO) --- */
@@ -2943,21 +3031,47 @@ body {
     .step { width: 100%; }
     .arrow { transform: rotate(90deg); margin: -5px 0; }
 
-    /* COMUNIDADE VIP (AJUSTE ALINHAMENTO ESQUERDA) */
-    .community-grid { grid-template-columns: 1fr; gap: 40px; }
-    .community-text { text-align: left; padding: 0 5px; }
-    .community-text h2 { font-size: 2rem; }
-    .benefit-list li { justify-content: flex-start; text-align: left; }
-    .small-note { justify-content: flex-start; }
-    .community-form-wrapper { padding: 30px 20px; }
-    .btn-vip { padding: 15px 10px; font-size: 0.9rem; white-space: nowrap; gap: 8px; }
-    .input-icon input { font-size: 0.95rem; }
+    /* APOIAR CAUSA */
+    .community-section { padding: 50px 0 56px; }
+    .community-grid { grid-template-columns: 1fr; gap: 28px; }
+    .community-text { text-align: left; padding: 0; }
+    .community-text h2 { font-size: clamp(1.95rem, 8.8vw, 2.75rem); line-height: 1; max-width: 100%; }
+    .lead-text { font-size: clamp(0.88rem, 4vw, 1rem); line-height: 1.28; }
+    .badge-vip { max-width: 100%; white-space: normal; line-height: 1.25; font-size: 0.66rem; padding: 8px 12px; }
+    .community-copy { font-size: 0.92rem; line-height: 1.55; }
+    .benefit-list { gap: 6px; }
+    .benefit-list li { grid-template-columns: 30px minmax(0, 1fr); text-align: left; font-size: 0.9rem; min-height: 38px; }
+    .benefit-list li i { width: 30px; height: 30px; }
+    .small-note { align-items: flex-start; }
+    .community-action-panel { padding: 22px 18px 20px; }
+    .community-panel-head h3 { font-size: clamp(1.38rem, 6.4vw, 1.75rem); }
+    .support-action { grid-template-columns: 38px minmax(0, 1fr); padding: 10px 11px; min-height: 54px; }
+    .support-action i { width: 38px; height: 38px; }
+    .support-action strong { font-size: 0.8rem; }
+    .btn-vip { min-height: 52px; padding: 13px 12px; white-space: normal; gap: 8px; font-size: 0.8rem; }
 
     /* EMERGENCY CARDS MOBILE */
     .emergency-grid { grid-template-columns: 1fr; } /* 1 Coluna no mobile */
     .important-header { flex-direction: column; gap: 5px; }
     .important-box { padding: 25px 20px; text-align: center; } /* Centralizado no box */
     .important-content ul { text-align: left; } /* Texto lista a esquerda */
+}
+
+@media (max-width: 480px) {
+    .community-section { padding: 44px 0 50px; }
+    .community-grid { gap: 24px; }
+    .community-text h2 { font-size: clamp(1.78rem, 9.6vw, 2.35rem); }
+    .community-copy { font-size: 0.88rem; }
+    .small-note { font-size: 0.78rem; }
+    .community-action-panel { padding: 20px 14px 18px; }
+    .community-panel-head span { font-size: 0.66rem; }
+    .community-panel-head h3 { font-size: clamp(1.25rem, 6.2vw, 1.55rem); }
+    .community-panel-head p { font-size: 0.86rem; }
+    .support-action { grid-template-columns: 36px minmax(0, 1fr); gap: 10px; }
+    .support-action i { width: 36px; height: 36px; font-size: 0.9rem; }
+    .support-action strong { font-size: 0.76rem; }
+    .btn-vip { font-size: 0.76rem; line-height: 1.22; }
+    .community-secure-line { font-size: 0.72rem; }
 }
 
 /* --- ANIMAÇÕES DE SCROLL --- */

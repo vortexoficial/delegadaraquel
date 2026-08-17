@@ -85,7 +85,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="style.min.css?v=perf-v1">
+    <link rel="stylesheet" href="style.min.css?v=apoio-v2">
 
     <link rel="stylesheet" href="propostas.css?v=21">
     <style id="hero-novo-css">
@@ -193,7 +193,7 @@
                 <li><a href="#cartilha">A Cartilha</a></li>
                 <li><a href="#comunidade">Comunidade</a></li>
                 <li><a href="#contato">Contato</a></li>
-                <li><a href="#denuncia" class="btn-nav">Ajuda Urgente</a></li>
+                <li><a href="#comunidade" class="btn-nav">APOIAR CAUSA</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -688,57 +688,54 @@
         </div>
     </section>
 
-    <section id="comunidade" class="section-padding community-section">
+    <section id="comunidade" class="section-padding community-section" aria-labelledby="apoio-title">
         <div class="container">
             <div class="community-grid">
                 
                 <div class="community-text scroll-animate">
-                    <span class="badge-vip"><i class="fa-solid fa-crown"></i> Comunidade Oficial</span>
-                    <h2>Entre para o <span class="highlight">Pelotão da Proteção</span></h2>
-                    <p class="lead-text">
-                        A informação chega primeiro para quem está perto. Junte-se à minha comunidade exclusiva no WhatsApp.
-                    </p>
+                    <span class="badge-vip"><i class="fa-brands fa-whatsapp"></i> Contato Whats do Time Raquel</span>
+                    <h2 id="apoio-title">Participe dessa causa e <span class="highlight">nos apoie</span></h2>
+                    <p class="lead-text">Entre para o Pelotão da Proteção.</p>
+                    <p class="community-copy">Juntos podemos melhorar a segurança pública do Estado de SP. A informação chega primeiro para quem está perto: fale com minha equipe, receba orientações e acompanhe de perto as ações do nosso mandato.</p>
                     <ul class="benefit-list">
                         <li><i class="fa-solid fa-check"></i> Notícias sobre leis em primeira mão.</li>
                         <li><i class="fa-solid fa-check"></i> Dicas de segurança exclusivas.</li>
                         <li><i class="fa-solid fa-check"></i> Acesso direto às ações do mandato.</li>
                     </ul>
-                    <p class="small-note"><i class="fa-solid fa-lock"></i> Grupo fechado e seguro (sem spam).</p>
+                    <p class="small-note"><i class="fa-solid fa-shield-halved"></i> Informação, mobilização e apoio por mais segurança para São Paulo.</p>
                 </div>
 
-                <div class="community-form-wrapper scroll-animate">
-                    <form id="lead-form-delegada" class="vip-form">
-                        <h3>Garanta sua vaga</h3>
-                        
-                        <div class="input-group">
-                            <label for="nome">Nome Completo</label>
-                            <div class="input-icon">
-                                <i class="fa-solid fa-user"></i>
-                                <input type="text" id="nome" name="Nome" placeholder="Digite seu nome" required>
-                            </div>
-                        </div>
+                <div class="community-action-panel scroll-animate">
+                    <div class="community-panel-head">
+                        <span>Garanta sua vaga</span>
+                        <h3>Fale comigo e minha equipe agora</h3>
+                        <p>Escolha como apoiar e receba o material certo para levar essa causa adiante.</p>
+                    </div>
 
-                        <div class="input-group">
-                            <label for="email">Seu Melhor E-mail</label>
-                            <div class="input-icon">
-                                <i class="fa-solid fa-envelope"></i>
-                                <input type="email" id="email" name="Email" placeholder="Digite seu e-mail" required>
-                            </div>
+                    <div class="support-actions" aria-label="Formas de apoiar a causa">
+                        <div class="support-action">
+                            <i class="fa-solid fa-file-shield"></i>
+                            <strong>Peça nosso material de apoio</strong>
                         </div>
-
-                        <div class="input-group">
-                            <label for="whatsapp">WhatsApp</label>
-                            <div class="input-icon">
-                                <i class="fa-brands fa-whatsapp"></i>
-                                <input type="tel" id="whatsapp" name="WhatsApp" placeholder="(00) 00000-0000" maxlength="15" required>
-                            </div>
+                        <div class="support-action">
+                            <i class="fa-solid fa-people-group"></i>
+                            <strong>Faça parte dessa causa</strong>
                         </div>
+                        <div class="support-action">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <strong>Mais segurança para São Paulo</strong>
+                        </div>
+                    </div>
 
-                        <button type="submit" id="submit-button" class="btn-vip">
-                            <span>Entrar para o Grupo VIP</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </form>
+                    <a class="btn-vip support-whatsapp-btn" href="https://wa.me/5513988010886?text=Como%20fa%C3%A7o%20para%20apoiar%20a%20Raquel%20como%20Deputada%3F" target="_blank" rel="noopener" data-pixel-contact>
+                        <span>Fale comigo e minha equipe agora</span>
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                    <div class="community-secure-line">
+                        <i class="fa-solid fa-lock"></i>
+                        Atendimento direto pelo WhatsApp oficial do Time Raquel.
+                    </div>
                 </div>
 
             </div>
@@ -851,7 +848,7 @@
             </div>
 
             <p class="contact-form-note scroll-animate">
-                Prefere ser contatada? <a href="#comunidade">Preencha o formulário da comunidade</a> e receba as orientações direto no seu WhatsApp.
+                Quer apoiar a causa? <a href="#comunidade">Fale com o Time Raquel pelo WhatsApp</a> e receba orientações, materiais e próximos passos.
             </p>
         </div>
     </section>
@@ -914,24 +911,6 @@
         </div>
     </footer>
 
-    <div id="vip-modal" class="modal">
-        <div class="modal-content vip-modal-style">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <div class="modal-header">
-                <i class="fa-brands fa-whatsapp"></i>
-                <h2>Comunidade Oficial</h2>
-            </div>
-            <p class="modal-invite">Cadastre-se para entrar na comunidade oficial e receber a cartilha, orientações e conteúdos de proteção.</p>
-            <form id="lead-form-popup" class="vip-form-popup">
-                <div class="input-icon"><i class="fa-solid fa-user"></i><input type="text" name="Nome" placeholder="Seu Nome Completo" required></div>
-                <div class="input-icon"><i class="fa-solid fa-envelope"></i><input type="email" name="Email" placeholder="Seu Melhor E-mail" required></div>
-                <div class="input-icon"><i class="fa-brands fa-whatsapp"></i><input type="tel" name="WhatsApp" class="phone-mask" placeholder="(DDD) + Número" required maxlength="15"></div>
-                <button type="submit" class="btn-vip btn-popup"><span>Entrar no Grupo</span><i class="fa-solid fa-arrow-right"></i></button>
-                <p class="form-note"><i class="fa-solid fa-lock"></i> Seus dados estão seguros.</p>
-            </form>
-        </div>
-    </div>
-
     <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
         <div class="cookie-banner-inner">
             <div class="cookie-banner-text">
@@ -946,7 +925,7 @@
     </div>
 
     <script src="consent.js?v=lgpd-v2"></script>
-    <script src="script.js?v=perf-v1"></script>
+    <script src="script.js?v=apoio-v1"></script>
     <script src="gsap.min.js" defer></script>
     <script src="propostas.js?v=16" defer></script>
     <div class="proposta-modal" id="propostaModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Proposta em vídeo">
