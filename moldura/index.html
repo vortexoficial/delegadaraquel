@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Moldura de perfil da Delegada Raquel</title>
+<meta name="description" content="Coloque a moldura da campanha da Delegada Raquel 55.550 na sua foto de perfil. Escolha a foto, ajuste e salve. A foto não sai do seu celular.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://delegadaraquel.com.br/moldura/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Delegada Raquel 55.550">
+<meta property="og:title" content="Moldura de perfil da Delegada Raquel">
+<meta property="og:description" content="Coloque a moldura da campanha na sua foto de perfil. Toque para fazer a sua.">
+<meta property="og:url" content="https://delegadaraquel.com.br/moldura/">
+<meta property="og:image" content="https://delegadaraquel.com.br/moldura/capa.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0D2054">
+<link rel="icon" type="image/webp" href="../img/favicon-fast.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800&display=swap">
+<link rel="preload" as="image" href="moldura-escura.png">
+<link rel="preload" as="image" href="moldura-clara.png">
+<style>
+  :root{
+    --azul:#0D2054;--azul2:#16337F;--amarelo:#FFD400;--verde:#77B800;
+    --branco:#fff;--texto:rgba(255,255,255,.86);--suave:rgba(255,255,255,.6);
+    --card:rgba(255,255,255,.06);--linha:rgba(255,255,255,.14);--raio:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    min-height:100dvh;background:var(--azul);color:var(--branco);
+    font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+    display:flex;flex-direction:column;align-items:center;
+    padding:22px 16px calc(28px + env(safe-area-inset-bottom));
+  }
+  .app{width:min(520px,100%);display:flex;flex-direction:column;gap:18px}
+  header{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+  .logo{width:min(250px,64%);height:auto;display:block}
+  .tag{font-size:.74rem;font-weight:700;letter-spacing:.22em;color:var(--amarelo);text-transform:uppercase}
+  h1{font-size:clamp(1.3rem,4.8vw,1.75rem);font-weight:800;line-height:1.2;max-width:22ch;text-wrap:balance}
+  .sub{font-size:.95rem;line-height:1.55;color:var(--texto);max-width:36ch}
+
+  .passo{background:var(--card);border:1px solid var(--linha);border-radius:var(--raio);padding:16px;display:flex;flex-direction:column;gap:14px}
+  .passo-cab{display:flex;align-items:center;gap:10px}
+  .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--amarelo);color:var(--azul);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800}
+  .passo-cab h2{font-size:1.02rem;font-weight:700}
+  .passo-cab small{display:block;font-size:.82rem;color:var(--suave);font-weight:500;margin-top:2px}
+
+  .escolher{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    min-height:150px;border:2px dashed rgba(255,212,0,.55);border-radius:14px;
+    background:rgba(255,212,0,.06);cursor:pointer;text-align:center;padding:18px;
+    transition:background .2s ease,border-color .2s ease;
+  }
+  .escolher:hover,.escolher:focus-within{background:rgba(255,212,0,.12);border-color:var(--amarelo)}
+  .escolher svg{width:34px;height:34px;stroke:var(--amarelo)}
+  .escolher b{font-size:1rem;font-weight:700}
+  .escolher span{font-size:.84rem;color:var(--suave)}
+  .escolher input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+  .editor{display:none;flex-direction:column;gap:14px}
+  .editor.ativo{display:flex}
+  .palco{position:relative;width:100%;aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:#000;touch-action:none;user-select:none;-webkit-user-select:none}
+  .palco canvas{width:100%;height:100%;display:block;cursor:grab}
+  .palco canvas:active{cursor:grabbing}
+  .guia{position:absolute;inset:0;pointer-events:none;border-radius:14px;
+    background:radial-gradient(circle at 50% 50%,transparent 0,transparent calc(50% - 2px),rgba(0,0,0,.28) calc(50% - 1px));}
+  .guia::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(255,255,255,.7)}
+  .dica{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);background:rgba(13,32,84,.85);color:#fff;font-size:.78rem;font-weight:600;padding:7px 12px;border-radius:999px;white-space:nowrap;pointer-events:none;transition:opacity .4s ease}
+  .dica.some{opacity:0}
+
+  .zoom{display:flex;align-items:center;gap:12px}
+  .zoom svg{width:22px;height:22px;stroke:var(--suave);flex:none}
+  .zoom input{flex:1;height:44px;accent-color:var(--amarelo);cursor:pointer}
+  .link{background:none;border:0;color:var(--amarelo);font:inherit;font-size:.86rem;font-weight:700;cursor:pointer;padding:8px 4px;text-decoration:underline;text-underline-offset:3px}
+
+  .opcoes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .opcao{
+    display:flex;align-items:center;gap:10px;padding:8px;border-radius:14px;
+    background:rgba(255,255,255,.04);border:2px solid var(--linha);color:#fff;font:inherit;cursor:pointer;text-align:left;
+    transition:border-color .2s ease,background .2s ease;
+  }
+  .opcao img{width:54px;height:54px;border-radius:10px;flex:none;object-fit:cover}
+  .opcao b{display:block;font-size:.95rem;font-weight:700}
+  .opcao span{display:block;font-size:.78rem;color:var(--suave);margin-top:2px}
+  .opcao[aria-pressed="true"]{border-color:var(--amarelo);background:rgba(255,212,0,.1)}
+  .opcao:focus-visible,.link:focus-visible,.escolher:focus-within,.botao:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+  .botao{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    min-height:56px;padding:14px 22px;border-radius:999px;border:0;
+    font:inherit;font-weight:800;font-size:1.02rem;cursor:pointer;text-decoration:none;
+    transition:transform .2s ease,background .2s ease,opacity .2s ease;
+  }
+  .botao svg{width:22px;height:22px;stroke:currentColor;flex:none}
+  .botao.primario{background:var(--amarelo);color:var(--azul);box-shadow:0 16px 40px -14px rgba(255,212,0,.8)}
+  .botao.primario:hover{background:#ffe04d;transform:translateY(-2px)}
+  .botao.primario:disabled{opacity:.55;cursor:wait;transform:none}
+  .botao.fantasma{background:transparent;color:#fff;border:2px solid var(--linha);min-height:50px;font-weight:700}
+  .botao.fantasma:hover{border-color:#fff}
+
+  .pronto{display:none;flex-direction:column;gap:12px;background:rgba(119,184,0,.12);border:1px solid rgba(119,184,0,.45);border-radius:var(--raio);padding:16px}
+  .pronto.ativo{display:flex}
+  .pronto h2{font-size:1rem;font-weight:800;display:flex;align-items:center;gap:8px}
+  .pronto h2 svg{width:22px;height:22px;stroke:var(--verde)}
+  .pronto ol{padding-left:20px;font-size:.92rem;line-height:1.6;color:var(--texto)}
+  .pronto img{width:min(220px,60%);border-radius:14px;align-self:center;display:none}
+  .pronto img.ativo{display:block}
+  .pronto p{font-size:.85rem;color:var(--suave);line-height:1.5}
+
+  .privacidade{display:flex;align-items:center;gap:8px;justify-content:center;font-size:.8rem;color:var(--suave);text-align:center}
+  .privacidade svg{width:16px;height:16px;stroke:var(--verde);flex:none}
+  .rodape{font-size:.72rem;color:rgba(255,255,255,.42);letter-spacing:.04em;text-align:center;line-height:1.6;margin-top:6px}
+  .status{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:#fff;color:var(--azul);font-size:.88rem;font-weight:700;padding:11px 18px;border-radius:999px;box-shadow:0 14px 40px -12px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;max-width:calc(100% - 32px);text-align:center}
+  .status.ativo{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media (min-width:560px){.passo{padding:20px}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <img class="logo" src="../img/logo-horizontal.webp" alt="Delegada Raquel 55.550, Deputada Estadual" fetchpriority="high">
+    <p class="tag">Moldura de perfil</p>
+    <h1>Coloque a moldura da Raquel na sua foto</h1>
+    <p class="sub">Escolha a foto, ajuste como quiser e salve. Depois é só trocar a foto do perfil no WhatsApp e no Instagram.</p>
+  </header>
+
+  <section class="passo" id="passoFoto">
+    <div class="passo-cab"><span class="num">1</span><h2>Escolha sua foto<small>Da galeria ou tire uma agora</small></h2></div>
+    <label class="escolher" id="areaEscolher">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      <b>Toque para escolher a foto</b>
+      <span>Fotos de rosto, bem iluminadas, ficam melhores</span>
+      <input type="file" id="arquivo" accept="image/*">
+    </label>
+  </section>
+
+  <section class="editor" id="editor" aria-live="polite">
+    <div class="passo">
+      <div class="passo-cab"><span class="num">2</span><h2>Ajuste a foto<small>Arraste para posicionar e use o zoom</small></h2></div>
+      <div class="palco" id="palco">
+        <canvas id="tela" width="1080" height="1080" aria-label="Prévia da sua foto com a moldura"></canvas>
+        <div class="guia" aria-hidden="true"></div>
+        <div class="dica" id="dica">Arraste a foto para posicionar</div>
+      </div>
+      <div class="zoom">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8 11h6"/></svg>
+        <input type="range" id="zoom" min="100" max="300" value="100" aria-label="Zoom da foto">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <button type="button" class="link" id="centralizar">Centralizar de novo</button>
+        <button type="button" class="link" id="trocar">Trocar a foto</button>
+      </div>
+    </div>
+
+    <div class="passo">
+      <div class="passo-cab"><span class="num">3</span><h2>Escolha a moldura<small>Uma combina com fotos claras, a outra com fotos escuras</small></h2></div>
+      <div class="opcoes" role="group" aria-label="Moldura">
+        <button type="button" class="opcao" data-moldura="escura" aria-pressed="true"><img src="moldura-escura-mini.jpg" alt=""><span><b>Escura</b><span>Faixa azul, fica bem em fotos claras</span></span></button>
+        <button type="button" class="opcao" data-moldura="clara" aria-pressed="false"><img src="moldura-clara-mini.jpg" alt=""><span><b>Clara</b><span>Leve, fica bem em fotos escuras</span></span></button>
+      </div>
+    </div>
+
+    <button type="button" class="botao primario" id="salvar">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+      Salvar foto com moldura
+    </button>
+
+    <section class="pronto" id="pronto">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Foto pronta</h2>
+      <img id="resultado" alt="Sua foto com a moldura">
+      <p id="prontoTexto">Se a foto não apareceu na sua galeria, toque e segure na imagem acima para salvar.</p>
+      <ol>
+        <li><b>WhatsApp:</b> Configurações, toque na sua foto, Galeria.</li>
+        <li><b>Instagram:</b> Perfil, Editar perfil, Editar foto ou avatar.</li>
+      </ol>
+      <button type="button" class="botao fantasma" id="salvarDeNovo">Salvar de novo</button>
+    </section>
+  </section>
+
+  <p class="privacidade"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Sua foto não sai do seu celular: tudo acontece aqui, na sua tela.</p>
+  <p class="rodape">Delegada Raquel · 55.550 · Deputada Estadual<br>Eleição 2026 Raquel Kobashi Gallinati Lombardi Deputado Estadual · CNPJ 68.455.619/0001-24</p>
+</div>
+
+<div class="status" id="status" role="status"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  var LADO = 1080;
+  var tela = document.getElementById('tela');
+  var ctx = tela.getContext('2d');
+  var arquivo = document.getElementById('arquivo');
+  var editor = document.getElementById('editor');
+  var passoFoto = document.getElementById('passoFoto');
+  var zoom = document.getElementById('zoom');
+  var dica = document.getElementById('dica');
+  var pronto = document.getElementById('pronto');
+  var resultado = document.getElementById('resultado');
+  var status = document.getElementById('status');
+  var salvarBtn = document.getElementById('salvar');
+
+  var molduras = { escura: new Image(), clara: new Image() };
+  molduras.escura.src = 'moldura-escura.png';
+  molduras.clara.src = 'moldura-clara.png';
+  var molduraAtual = 'escura';
+
+  var foto = null;        // Image escolhida
+  var base = 1;           // escala que cobre o quadrado
+  var z = 1;              // zoom extra (1 a 3)
+  var ox = 0, oy = 0;     // posicao da foto no canvas (unidades do canvas)
+  var dicaVista = false;
+  var timerStatus = null;
+
+  function avisar(msg) {
+    status.textContent = msg;
+    status.classList.add('ativo');
+    clearTimeout(timerStatus);
+    timerStatus = setTimeout(function () { status.classList.remove('ativo'); }, 2600);
+  }
+
+  function tamanhoFoto() {
+    return { w: foto.width * base * z, h: foto.height * base * z };
+  }
+
+  function limitar() {
+    var t = tamanhoFoto();
+    ox = Math.min(0, Math.max(LADO - t.w, ox));
+    oy = Math.min(0, Math.max(LADO - t.h, oy));
+  }
+
+  function centralizar() {
+    var t = tamanhoFoto();
+    ox = (LADO - t.w) / 2;
+    oy = (LADO - t.h) / 2;
+  }
+
+  function desenhar() {
+    ctx.clearRect(0, 0, LADO, LADO);
+    if (foto) {
+      var t = tamanhoFoto();
+      ctx.drawImage(foto, ox, oy, t.w, t.h);
+    }
+    var m = molduras[molduraAtual];
+    if (m.complete && m.naturalWidth) ctx.drawImage(m, 0, 0, LADO, LADO);
+  }
+
+  molduras.escura.onload = desenhar;
+  molduras.clara.onload = desenhar;
+
+  function carregarFoto(file) {
+    if (!file || !/^image\//.test(file.type)) { avisar('Escolha um arquivo de imagem.'); return; }
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () {
+      URL.revokeObjectURL(url);
+      foto = img;
+      base = Math.max(LADO / img.width, LADO / img.height);
+      z = 1;
+      zoom.value = 100;
+      centralizar();
+      desenhar();
+      passoFoto.style.display = 'none';
+      editor.classList.add('ativo');
+      pronto.classList.remove('ativo');
+      resultado.classList.remove('ativo');
+      dica.classList.remove('some');
+      dicaVista = false;
+      editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); avisar('Não consegui abrir essa foto. Tente outra.'); };
+    img.src = url;
+  }
+
+  arquivo.addEventListener('change', function () { carregarFoto(arquivo.files && arquivo.files[0]); arquivo.value = ''; });
+
+  // Zoom pelo controle, mantendo o centro no lugar.
+  function aplicarZoom(novoZ, cx, cy) {
+    novoZ = Math.min(3, Math.max(1, novoZ));
+    if (!foto) return;
+    var antes = tamanhoFoto();
+    var fx = (cx - ox) / antes.w;
+    var fy = (cy - oy) / antes.h;
+    z = novoZ;
+    var depois = tamanhoFoto();
+    ox = cx - fx * depois.w;
+    oy = cy - fy * depois.h;
+    limitar();
+    zoom.value = Math.round(z * 100);
+    desenhar();
+  }
+  zoom.addEventListener('input', function () { aplicarZoom(Number(zoom.value) / 100, LADO / 2, LADO / 2); });
+
+  document.getElementById('centralizar').addEventListener('click', function () { z = 1; zoom.value = 100; centralizar(); desenhar(); });
+  document.getElementById('trocar').addEventListener('click', function () { arquivo.click(); });
+
+  // Arrastar (um dedo) e pinca (dois dedos), com pointer events.
+  var ponteiros = new Map();
+  var ultimaDist = 0;
+  function escalaTela() { return LADO / tela.getBoundingClientRect().width; }
+  function pontoNoCanvas(e) {
+    var r = tela.getBoundingClientRect();
+    var k = LADO / r.width;
+    return { x: (e.clientX - r.left) * k, y: (e.clientY - r.top) * k };
+  }
+
+  tela.addEventListener('pointerdown', function (e) {
+    if (!foto) return;
+    tela.setPointerCapture(e.pointerId);
+    ponteiros.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (ponteiros.size === 2) {
+      var p = Array.from(ponteiros.values());
+      ultimaDist = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+    }
+    if (!dicaVista) { dicaVista = true; dica.classList.add('some'); }
+  });
+
+  tela.addEventListener('pointermove', function (e) {
+    if (!foto || !ponteiros.has(e.pointerId)) return;
+    var ant = ponteiros.get(e.pointerId);
+    var k = escalaTela();
+    if (ponteiros.size === 1) {
+      ox += (e.clientX - ant.x) * k;
+      oy += (e.clientY - ant.y) * k;
+      limitar();
+      desenhar();
+    }
+    ponteiros.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (ponteiros.size === 2) {
+      var p = Array.from(ponteiros.values());
+      var d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+      if (ultimaDist > 0) {
+        var meio = pontoNoCanvas({ clientX: (p[0].x + p[1].x) / 2, clientY: (p[0].y + p[1].y) / 2 });
+        aplicarZoom(z * (d / ultimaDist), meio.x, meio.y);
+      }
+      ultimaDist = d;
+    }
+  });
+
+  function soltar(e) { ponteiros.delete(e.pointerId); if (ponteiros.size < 2) ultimaDist = 0; }
+  tela.addEventListener('pointerup', soltar);
+  tela.addEventListener('pointercancel', soltar);
+  tela.addEventListener('pointerleave', soltar);
+
+  // Roda do mouse (computador).
+  tela.addEventListener('wheel', function (e) {
+    if (!foto) return;
+    e.preventDefault();
+    var p = pontoNoCanvas(e);
+    aplicarZoom(z * (e.deltaY < 0 ? 1.08 : 0.92), p.x, p.y);
+  }, { passive: false });
+
+  // Escolha da moldura.
+  Array.prototype.forEach.call(document.querySelectorAll('.opcao'), function (btn) {
+    btn.addEventListener('click', function () {
+      molduraAtual = btn.getAttribute('data-moldura');
+      Array.prototype.forEach.call(document.querySelectorAll('.opcao'), function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      desenhar();
+    });
+  });
+
+  // Salvar: no celular tenta a folha de compartilhar (tem "Salvar imagem"); senao baixa o arquivo.
+  function salvar() {
+    if (!foto) return;
+    salvarBtn.disabled = true;
+    var textoOriginal = salvarBtn.innerHTML;
+    salvarBtn.textContent = 'Preparando…';
+    desenhar();
+    tela.toBlob(function (blob) {
+      salvarBtn.disabled = false;
+      salvarBtn.innerHTML = textoOriginal;
+      if (!blob) { avisar('Não consegui gerar a imagem. Tente de novo.'); return; }
+      var nome = 'moldura-delegada-raquel.jpg';
+      var file;
+      try { file = new File([blob], nome, { type: 'image/jpeg' }); } catch (err) { file = null; }
+
+      resultado.src = URL.createObjectURL(blob);
+      resultado.classList.add('ativo');
+      pronto.classList.add('ativo');
+
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: 'Minha foto com a moldura da Delegada Raquel' })
+          .then(function () { avisar('Pronto. Escolha "Salvar imagem" para guardar na galeria.'); })
+          .catch(function () { /* a pessoa fechou a folha; a imagem continua na tela */ });
+      } else {
+        var a = document.createElement('a');
+        a.href = resultado.src;
+        a.download = nome;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        avisar('Foto salva. Confira na pasta de downloads ou na galeria.');
+      }
+      pronto.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 'image/jpeg', 0.92);
+  }
+  salvarBtn.addEventListener('click', salvar);
+  document.getElementById('salvarDeNovo').addEventListener('click', salvar);
+
+  desenhar();
+})();
+</script>
+</body>
+</html>
