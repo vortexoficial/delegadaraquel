@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sua vez da Delegada Raquel</title>
+<meta name="description" content="Poste seu story com a moldura da campanha da Delegada Raquel 55.550. Toque para abrir no Instagram.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://delegadaraquel.com.br/suavez/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Delegada Raquel 55.550">
+<meta property="og:title" content="Sua vez da Delegada Raquel">
+<meta property="og:description" content="Poste seu story com a moldura da campanha. Toque para abrir no Instagram.">
+<meta property="og:url" content="https://delegadaraquel.com.br/suavez/">
+<meta property="og:image" content="https://delegadaraquel.com.br/suavez/capa.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/webp" href="../img/favicon-fast.webp">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:#0D2054;color:#fff;
+    font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:26px 18px 34px;text-align:center;gap:22px;
+  }
+  .logo{width:min(300px,72%);height:auto;display:block}
+  .tag{font-size:.8rem;font-weight:700;letter-spacing:.22em;color:#FFD400;text-transform:uppercase}
+  h1{font-size:clamp(1.4rem,5vw,2.1rem);font-weight:800;line-height:1.18;max-width:20ch}
+  h1 span{color:#FFD400}
+  ol{list-style:none;display:grid;gap:10px;max-width:34ch;font-size:clamp(.95rem,3.2vw,1.05rem);line-height:1.5;color:rgba(255,255,255,.86)}
+  ol li{display:flex;align-items:center;gap:12px;text-align:left}
+  ol b{flex:none;width:30px;height:30px;border-radius:50%;background:#FFD400;color:#0D2054;display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800}
+  .cta{
+    display:inline-flex;align-items:center;gap:11px;
+    background:#FFD400;color:#0D2054;text-decoration:none;
+    font-weight:800;font-size:clamp(1rem,3.6vw,1.1rem);
+    padding:17px 34px;border-radius:999px;
+    box-shadow:0 16px 40px -14px rgba(255,212,0,.8);
+    transition:transform .2s ease,background .2s ease;
+  }
+  .cta:hover{background:#ffe04d;transform:translateY(-2px)}
+  .cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .cta svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .aviso{font-size:.85rem;color:rgba(255,255,255,.6);max-width:38ch;line-height:1.5}
+  .rodape{font-size:.74rem;color:rgba(255,255,255,.42);letter-spacing:.04em}
+  @media (prefers-reduced-motion:reduce){.cta{transition:none}}
+</style>
+</head>
+<body>
+
+  <img class="logo" src="../img/logo-horizontal.webp" alt="Delegada Raquel 55.550, Deputada Estadual" fetchpriority="high">
+
+  <p class="tag">Sua vez</p>
+  <h1>Poste seu story com a moldura da <span>Delegada Raquel</span></h1>
+
+  <ol>
+    <li><b>1</b><span>Toque no botão e o Instagram abre no Destaque da Raquel</span></li>
+    <li><b>2</b><span>Toque no adesivo "Sua vez"</span></li>
+    <li><b>3</b><span>Tire sua foto e publique no seu story</span></li>
+  </ol>
+
+  <a class="cta" id="botao" href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTAxOTQ5ODg2ODEyOTE1?story_media_id=3977545617803027574&amp;igsi=M3cwN2U4a3B2YjRh" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    Abrir no Instagram
+  </a>
+
+  <p class="aviso" id="aviso">Se o Instagram não abrir sozinho, toque no botão.</p>
+  <p class="rodape">Delegada Raquel · 55.550 · Deputada Estadual<br>Eleição 2026 Raquel Kobashi Gallinati Lombardi Deputado Estadual · CNPJ 68.455.619/0001-24</p>
+
+<script>
+/* No Android o Instagram abre sozinho pouco depois de a pagina aparecer. No iPhone o app
+   so abre a partir de um toque real no link (regra do sistema), por isso la fica o botao. */
+(function () {
+  'use strict';
+  var botao = document.getElementById('botao');
+  if (!botao) return;
+  if (!/Android/i.test(navigator.userAgent)) return;
+  window.setTimeout(function () {
+    window.location.href = botao.getAttribute('href');
+  }, 1400);
+})();
+</script>
+</body>
+</html>
