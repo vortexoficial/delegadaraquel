@@ -37,16 +37,19 @@
     display:flex;flex-direction:column;align-items:center;
     padding:22px 16px calc(28px + env(safe-area-inset-bottom));
   }
-  .app{width:min(1040px,100%);display:flex;flex-direction:column;align-items:center;gap:20px}
+  /* A tela inicial (so o passo 1) fica centralizada na altura do aparelho, com o rodape
+     encostado embaixo; quando o editor abre, a pagina cresce e rola normalmente. */
+  .app{width:min(1040px,100%);flex:1;display:flex;flex-direction:column;align-items:center}
+  .miolo{width:100%;display:flex;flex-direction:column;align-items:center;gap:24px;margin:auto 0;padding:12px 0 28px}
 
   /* Cabecalho */
-  header{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;max-width:600px}
-  .logo{width:min(240px,62%);height:auto;display:block;margin-bottom:4px}
+  header{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;max-width:600px}
+  .logo{width:min(250px,64%);height:auto;display:block;margin-bottom:6px}
   .tag{font-size:.74rem;font-weight:700;letter-spacing:.22em;color:var(--amarelo);text-transform:uppercase}
   h1{font-size:clamp(1.3rem,4.8vw,1.9rem);font-weight:800;line-height:1.2;max-width:22ch;text-wrap:balance}
-  .sub{font-size:.95rem;line-height:1.55;color:var(--texto);max-width:40ch}
+  .sub{font-size:.95rem;line-height:1.55;color:var(--texto);max-width:34ch;text-wrap:balance}
   .privacidade{
-    display:inline-flex;align-items:center;gap:8px;margin-top:4px;
+    display:inline-flex;align-items:center;gap:8px;margin-top:6px;
     padding:9px 16px;border-radius:999px;white-space:nowrap;
     background:rgba(119,184,0,.12);border:1px solid rgba(119,184,0,.45);
     font-size:.82rem;font-weight:600;color:var(--texto);
@@ -64,7 +67,7 @@
   #passoFoto{width:min(520px,100%)}
   .escolher{
     position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
-    min-height:160px;border:2px dashed rgba(255,212,0,.55);border-radius:14px;
+    min-height:min(220px,32dvh);border:2px dashed rgba(255,212,0,.55);border-radius:14px;
     background:rgba(255,212,0,.06);cursor:pointer;text-align:center;padding:18px;
     transition:background .2s ease,border-color .2s ease;
   }
@@ -129,7 +132,7 @@
   .pronto img.ativo{display:block}
   .pronto p{font-size:.85rem;color:var(--suave);line-height:1.5}
 
-  .rodape{font-size:.72rem;color:rgba(255,255,255,.42);letter-spacing:.04em;text-align:center;line-height:1.6;margin-top:4px}
+  .rodape{font-size:.72rem;color:rgba(255,255,255,.42);letter-spacing:.04em;text-align:center;line-height:1.6;padding-top:8px}
   .status{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:#fff;color:var(--azul);font-size:.88rem;font-weight:700;padding:11px 18px;border-radius:999px;box-shadow:0 14px 40px -12px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;max-width:calc(100% - 32px);text-align:center}
   .status.ativo{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -137,7 +140,7 @@
   @media (max-width:360px){.privacidade{white-space:normal;text-align:left}}
   @media (min-width:900px){
     body{padding-top:36px}
-    .app{gap:28px}
+    .miolo{gap:30px}
     .passo{padding:22px}
     .grade{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;width:100%;align-items:start}
     .opcao{flex-direction:row;text-align:left;padding:12px 14px;gap:12px}
@@ -147,6 +150,7 @@
 </head>
 <body>
 <div class="app">
+<div class="miolo">
 
   <header>
     <img class="logo" src="../img/logo-horizontal.webp" alt="Delegada Raquel 55.550, Deputada Estadual" fetchpriority="high">
@@ -215,6 +219,7 @@
       </div>
     </div>
   </section>
+</div>
 
   <p class="rodape">Delegada Raquel · 55.550 · Deputada Estadual<br>Eleição 2026 Raquel Kobashi Gallinati Lombardi Deputado Estadual · CNPJ 68.455.619/0001-24</p>
 </div>
