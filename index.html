@@ -89,7 +89,6 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="style.min.css?v=calc-v5">
 
-    <link rel="stylesheet" href="propostas.css?v=21">
     <style id="ajustes-css">
     /* Logo horizontal no rodape (700x168): o CSS base espera a logo quadrada */
     .footer-logo-img{ width:min(250px,64vw); height:auto; max-height:none; border-radius:0; }
@@ -164,51 +163,6 @@
             </div>
         </div>
     </div>
-
-    <section id="propostas" class="propostas-section" data-api="https://coragemparamudar.online/api/propostas">
-        <div class="container">
-            <header class="propostas-head">
-                <span class="propostas-kicker"><i class="fa-solid fa-list-check"></i> Propostas</span>
-                <h2>O que eu vou <span class="highlight">defender</span> na Assembleia Legislativa de SP</h2>
-                <p class="propostas-lead">Cada proposta em um vídeo curto. Toque no vídeo para abrir e ler a proposta completa.</p>
-            </header>
-        </div>
-
-        <div class="propostas-stage" id="propostasStage" role="region" aria-label="Carrossel de propostas">
-            <div class="propostas-sizer" aria-hidden="true"></div>
-            <div class="propostas-3d" id="propostas3d">
-                <article class="proposta-slide" data-tag="Proteção à mulher" data-titulo="Delegacia da Mulher 24 horas" data-resumo="Atendimento especializado a qualquer hora, em todas as regiões do estado. Quem procura ajuda não pode ouvir &quot;volte amanhã&quot;." data-texto="Hoje muitas mulheres chegam à delegacia no pior momento da vida e encontram a porta fechada. A violência não tem hora marcada, e o socorro também não pode ter.||Vou trabalhar para que cada região do estado tenha uma Delegacia da Mulher aberta 24 horas, com equipe treinada, sala reservada para o depoimento e atendimento humanizado desde a primeira palavra.||Onde não houver estrutura para a unidade completa, um plantão especializado deve funcionar dentro da delegacia comum, com profissionais capacitados para acolher e registrar o caso na hora.">
-                    <div class="proposta-card3d">
-                        <video class="proposta-video" src="https://coragemparamudar.online/media/propostas/9a4231a5-93b0-492e-bc40-40e2a8d499c1.mp4" poster="https://coragemparamudar.online/media/propostas/3a3e91d6-bc77-4f28-8878-690e7ebf2465.jpg" muted loop playsinline preload="none" disablepictureinpicture></video>
-                        <div class="proposta-veil"></div>
-                        <span class="proposta-tag">Proteção à mulher</span>
-                        <div class="proposta-teaser">
-                            <h3>Delegacia da Mulher 24 horas</h3>
-                            <p>Atendimento especializado a qualquer hora, em todas as regiões do estado. Quem procura ajuda não pode ouvir &quot;volte amanhã&quot;.</p>
-                            <span class="proposta-expand"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Ver proposta</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="proposta-slide" data-tag="Medida protetiva" data-titulo="Patrulha Maria da Penha em cada cidade" data-resumo="Equipes que visitam e acompanham quem tem medida protetiva, para a proteção não terminar no papel do juiz." data-texto="A medida protetiva é uma conquista, mas sozinha ela é apenas um documento. O que salva vidas é o acompanhamento depois que a decisão sai.||A Patrulha Maria da Penha visita periodicamente a mulher protegida, verifica se o agressor está respeitando a decisão e mantém um canal direto com a polícia. Onde ela existe, o descumprimento cai e o feminicídio cai junto.||Minha proposta é levar esse programa a todos os municípios paulistas, com viatura, equipe treinada e integração entre a Polícia Militar, a Guarda Civil e a rede de proteção da cidade.">
-                    <div class="proposta-card3d">
-                        <video class="proposta-video" src="https://coragemparamudar.online/media/propostas/11b45062-e15c-49a8-a594-f0302c27753b.mp4" poster="https://coragemparamudar.online/media/propostas/d9c5d3fc-75c9-4da4-94a5-5a929533859e.jpg" muted loop playsinline preload="none" disablepictureinpicture></video>
-                        <div class="proposta-veil"></div>
-                        <span class="proposta-tag">Medida protetiva</span>
-                        <div class="proposta-teaser">
-                            <h3>Patrulha Maria da Penha em cada cidade</h3>
-                            <p>Equipes que visitam e acompanham quem tem medida protetiva, para a proteção não terminar no papel do juiz.</p>
-                            <span class="proposta-expand"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Ver proposta</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <button class="propostas-nav prev" type="button" aria-label="Proposta anterior"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="propostas-nav next" type="button" aria-label="Próxima proposta"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-
-        <div class="propostas-dots" id="propostasDots"></div>
-        <p class="propostas-hint"><i class="fa-solid fa-hand-pointer"></i> Arraste pro lado</p>
-    </section>
 
     <section id="sobre" class="about-authority">
         <div class="container about-grid">
@@ -847,25 +801,6 @@
 
     <script src="consent.js?v=lgpd-v2"></script>
     <script src="script.js?v=apoio-v1"></script>
-    <script src="gsap.min.js" defer></script>
-    <script src="propostas.js?v=16" defer></script>
-    <div class="proposta-modal" id="propostaModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Proposta em vídeo">
-        <div class="proposta-modal-backdrop"></div>
-        <div class="proposta-modal-inner">
-            <button class="proposta-close" id="propostaClose" type="button" aria-label="Fechar e voltar ao site"><i class="fa-solid fa-xmark"></i></button>
-            <div class="proposta-modal-col">
-                <div class="proposta-modal-video" id="propostaModalVideo"><button class="proposta-modal-mute" id="propostaMute" type="button" aria-label="Desativar o som"><i class="fa-solid fa-volume-high"></i></button></div>
-                <button class="proposta-ler" id="propostaLer" type="button">Ler proposta <i class="fa-solid fa-arrow-down"></i></button>
-            </div>
-            <div class="proposta-balao" id="propostaBalao"><div class="proposta-balao-inner"></div></div>
-        </div>
-
-        <div class="proposta-apoio-bar" id="propostaApoioBar">
-            <a class="proposta-apoio" href="https://coragemparamudar.online/ir/apoio" target="_blank" rel="noopener">
-                <svg class="zap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.21-8.24 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06s.89 2.39 1.01 2.55c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg> Eu apoio essa causa
-            </a>
-        </div>
-    </div>
 
 </body>
 </html>
